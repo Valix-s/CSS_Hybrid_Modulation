@@ -52,22 +52,22 @@ Zusammen mit den verwendeten Rundstrahlantennen (3 dBi Gewinn) und einem minimal
 
 Die Software wurde schrittweise entwickelt. Jedes Skript in diesem Repository erfüllt einen spezifischen Zweck bei der Evaluation des Funkprotokolls:
 
-### `End_Simulation.py`
+### `01_simulation_ideal_channel.py`
 Die vollständige Basis-Simulation des Protokolls im idealen mathematischen Raum.
 * **Ablauf:** Generiert zufällige Bits $\rightarrow$ LDPC-Codierung $\rightarrow$ Symbol-Mapping (Hybrid: LoRa-Wert, Up/Down-Richtung, QPSK-Phase) $\rightarrow$ I/Q-Signal-Synthese $\rightarrow$ AWGN-Kanal (künstliches Rauschen) $\rightarrow$ Empfänger-Dechirping $\rightarrow$ LDPC-Decodierung.
 * **Prämisse:** Dieses Skript geht von einer **absolut perfekten Synchronisation** aus. Es existiert kein Carrier Frequency Offset (CFO) und kein Timing-Fehler. Es dient ausschließlich dazu, die theoretische Bitfehlerrate (BER) der Modulation unter starken Rauschbedingungen (SNR-Sweep) zu verifizieren.
 
-### `simulation_simpel.py`
+### `02_simulation_fft_sync.py`
 Simulation zur isolierten Entwicklung der Präambel-Erkennung und Paket-Synchronisation.
 * **Besonderheit:** Die rechenintensive LDPC-Kanalcodierung wurde hier vollständig entfernt, um Fehlerquellen bei der Erprobung der reinen Frequenz-Synchronisation auszuschließen.
 * **Synchronisations-Logik:** Die herkömmliche, extrem fehleranfällige Kreuzkorrelation im Zeitbereich wurde durch ein Schiebe-Fenster-Verfahren im Frequenzbereich ersetzt. Das Skript multipliziert das Empfangssignal mit einem lokalen Downchirp und sucht über eine Fast Fourier Transformation (FFT) nach dem charakteristischen Energie-Peak. Wiederholt sich dieser Peak bei den 16 Präambel-Symbolen im selben Frequenz-Bin, wird aus dem Bin-Index der exakte mathematische Startpunkt des Pakets (Timing-Offset) berechnet.
 
-### `Pluto_test_simpel.py`
+### `03_sdr_rx_tx_basic.py`
 Die direkte Übertragung der simplen Simulation auf die reale SDR-Hardware (ADALM-Pluto).
 * **Besonderheit:** Verzichtet auf LDPC und TDMA-Logiken. Nutzt die `adi`-Bibliothek für die Hardware-Ansteuerung über Ethernet.
 * **Funktion:** Ermöglicht das manuelle Senden und kontinuierliche Empfangen von Basis-Paketen (324 Bits) über die Luft. Es dient dem direkten Test der FFT-Synchronisation unter realen Hochfrequenz-Bedingungen.
 
-### `Pluto_test.py`
+### `04_sdr_transceiver_full.py`
 Das vollständige und komplexeste Hardware-Skript.
 * **Inhalt:** Führt alle Komponenten zusammen: SDR-Steuerung, dynamische Rauschboden-Kalibrierung (das System misst beim Start 20-mal den Hintergrundpegel, um Schwellenwerte zu setzen), LDPC-Fehlerkorrektur und ein Time Division Multiple Access (TDMA) Verfahren.
 * **Aktueller Status:** Das TDMA-Verfahren definiert feste Zeitschlitze zum Senden und Empfangen, um Puffer-Unterläufe zu verhindern. Aufgrund des extrem ungenauen Timings (Jitter) von Windows-Betriebssystemen verpasst der Code aktuell jedoch häufig die Slot-Grenzen. Daher wird in der Praxis vorerst das einmalige Senden und das kontinuierliche Empfangen genutzt.

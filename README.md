@@ -1,91 +1,91 @@
-# High-Speed SDR-Modem: Lückenschluss zwischen WLAN und LoRa
+# High-Speed SDR Modem: Bridging the Gap Between Wi-Fi and LoRa
 
-Dieses Repository enthält den Python-Quellcode, die begleitenden Simulationen sowie die Entwicklungsdokumentation zu meiner Maturaarbeit an der Kantonsschule Reussbühl (Luzern).
+This repository contains the Python source code, accompanying simulations, and development documentation for my Matura project (high school graduation thesis) at Kantonsschule Reussbühl (Lucerne, Switzerland).
 
-**Thema der Arbeit:** Entwicklung eines lizenzfreien Funkprotokolls zur Schliessung der Bandbreiten-Reichweiten-Lücke zwischen WLAN und LoRa: Implementierung eines High-Speed SDR-Modems unter Berücksichtigung der BAKOM RIR1010-01 Regulierung.
-
----
-
-##  1. Ziel der Arbeit und Modulationskonzept
-
-Das primäre Ziel dieses Projekts ist die Entwicklung eines hybriden Kommunikationssystems, das die physikalischen Vorteile der robusten LoRa-Modulation (Chirp Spread Spectrum, CSS) mit wesentlich höheren Datenübertragungsraten kombiniert. Aktuelle Funktechnologien erzwingen meist einen Kompromiss aus hoher Datenrate bei kurzer Reichweite (WLAN) oder hoher Reichweite bei minimaler Datenrate (LoRa). 
-
-Um diese Lücke zu schließen, operiert das entwickelte Protokoll im 2.4 GHz ISM-Band mit einer sehr hohen **Bandbreite von 10 MHz**. Das System ist auf einen niedrigen **Spreading Factor von 5 (SF5)** ausgelegt und bricht die klassischen Datenraten-Limits von LoRa durch eine Erweiterung der Modulationsebene:
-
-1. **Slope-Shift-Keying (SSK):** Parallele Nutzung von Up- und Down-Chirps. Die Erkennung der Chirp-Richtung liefert einen Datengewinn von exakt +1 Bit pro Symbol.
-2. **Phasenumtastung (QPSK):** Einbettung von zusätzlichen 2 Bits in die Phasenlage (45°-Offsets: $\pi/4, 3\pi/4, 5\pi/4, 7\pi/4$) jedes einzelnen Chirps.
-3. **Kanalcodierung:** Implementierung eines Low-Density Parity-Check (LDPC) Decoders basierend auf der IEEE 802.11n Matrix (Rate 1/2) für eine hocheffiziente Vorwärtsfehlerkorrektur.
-
-Zukünftig soll das System durch ein $2\times2$ MIMO-Setup (Spatial Multiplexing) räumlich erweitert werden.
+**Thesis Topic:** Development of a license-free wireless protocol to close the bandwidth-range gap between Wi-Fi and LoRa: Implementation of a high-speed SDR modem in compliance with the BAKOM RIR1010-01 regulation.
 
 ---
 
-##  2. Regulatorien und exakte Sendeleistung (Link-Budget)
+##  1. Project Goal and Modulation Concept
 
-Das System wurde strikt nach dem Schweizerischen Frequenzweisungsplan des BAKOM (Richtlinie RIR1010-01 für Wideband Data Transmission im 2.4 GHz Band) entwickelt. Diese Richtlinie erlaubt eine maximale äquivalente isotrope Strahlungsleistung (EIRP) von 100 mW (entspricht 20 dBm).
+The primary goal of this project is to develop a hybrid communication system that combines the physical advantages of the robust LoRa modulation (Chirp Spread Spectrum, CSS) with significantly higher data transfer rates. Current wireless technologies usually force a compromise between high data rates at a short range (Wi-Fi) or long range at minimal data rates (LoRa). 
 
-Die Sendeleistung der in diesem Projekt verwendeten Hardware setzt sich wie folgt zusammen:
-* **Transceiver-Ausgang (AD9361):** 7.9 dBm (bei 2.4 GHz)
-* **Zusätzlicher Leistungsverstärker (PGA-102+):** +10.0 dB
-* **Verluste durch Platinen-Leiterbahnen:** -0.3 dB
-* **Verluste durch Balun (TCM1-63AX+):** -1.4 dB
+To close this gap, the developed protocol operates in the 2.4 GHz ISM band with a very high **bandwidth of 10 MHz**. The system is designed for a low **Spreading Factor of 5 (SF5)** and breaks the classic data rate limits of LoRa by expanding the modulation layer:
 
-Die effektive Ausgangsleistung an der SMA-Buchse des SDRs beträgt somit exakt **16.2 dBm**. 
-Zusammen mit den verwendeten Rundstrahlantennen (3 dBi Gewinn) und einem minimalen Kabelverlust (0.2 dB) resultiert dies in einer abgestrahlten Gesamtsendeleistung (**EIRP**) von **~19.0 dBm**. Das System reizt das gesetzliche Limit von 20 dBm somit optimal aus, ohne es zu überschreiten.
+1. **Slope-Shift Keying (SSK):** Parallel use of up- and down-chirps. Detecting the chirp direction provides an exact data gain of +1 bit per symbol.
+2. **Quadrature Phase-Shift Keying (QPSK):** Embedding an additional 2 bits into the phase angle (45° offsets: $\pi/4, 3\pi/4, 5\pi/4, 7\pi/4$) of each individual chirp.
+3. **Channel Coding:** Implementation of a Low-Density Parity-Check (LDPC) decoder based on the IEEE 802.11n matrix (rate 1/2) for highly efficient forward error correction.
 
----
-
-##  3. Verwendete Hardware und Gehäuse
-
-* **SDR-Plattform:** Modifizierte *Professional Edition* des ADALM-Pluto.
-  * Transceiver: AD9363 (per Firmware-Mod auf AD9361 aufgewertet für 56 MHz Bandbreite).
-  * System-on-Chip: Xilinx Zynq-7020 FPGA mit 1 GB RAM.
-  * Oszillator: TCXO mit 0.5 ppm Genauigkeit zur Minimierung des Frequenzdrifts.
-  * Datenanbindung: Gigabit-Ethernet für maximalen Durchsatz.
-* **Antennen:** GEPRC 2.4 GHz Tri-Band Stick Antennen (Omnidirektional, 3 dBi, VSWR < 1.5).
-* **Gehäuse & Abschirmung:** Eigens in Fusion 360 konstruiertes und 3D-gedrucktes Gehäuse. Um die empfindliche SDR-Elektronik vor lokalen 2.4 GHz Interferenzen abzuschirmen, ist der Innenraum vollständig mit Kupferfolie ausgekleidet (Faradayscher Käfig), welche durch Kapton-Tape elektrisch isoliert wurde. Die Kühlung erfolgt aktiv über einen 5V-Lüfter (4020).
-* **Zeitsynchronisation (Work-in-Progress):** u-blox NEO-6M und ATGM336H GPS-Module, verbunden über einen ESP32-Mikrocontroller.
+In the future, the system will be spatially expanded via a $2\times2$ MIMO (Spatial Multiplexing) setup.
 
 ---
 
-##  4. Funktionsweise der Skripte
+##  2. Regulations and Exact Transmission Power (Link Budget)
 
-Die Software wurde schrittweise entwickelt. Jedes Skript in diesem Repository erfüllt einen spezifischen Zweck bei der Evaluation des Funkprotokolls:
+The system was developed strictly according to the Swiss frequency allocation plan of BAKOM (Federal Office of Communications, guideline RIR1010-01 for Wideband Data Transmission in the 2.4 GHz band). This guideline permits a maximum Equivalent Isotropically Radiated Power (EIRP) of 100 mW (equivalent to 20 dBm).
+
+The transmission power of the hardware used in this project is calculated as follows:
+* **Transceiver Output (AD9361):** 7.9 dBm (at 2.4 GHz)
+* **Additional Power Amplifier (PGA-102+):** +10.0 dB
+* **PCB Trace Losses:** -0.3 dB
+* **Balun Losses (TCM1-63AX+):** -1.4 dB
+
+The effective output power at the SMA connector of the SDR is therefore exactly **16.2 dBm**. 
+Combined with the omnidirectional antennas used (3 dBi gain) and minimal cable loss (0.2 dB), this results in a total radiated power (**EIRP**) of **~19.0 dBm**. Thus, the system optimally utilizes the legal limit of 20 dBm without exceeding it.
+
+---
+
+##  3. Hardware and Enclosure Used
+
+* **SDR Platform:** Modified *Professional Edition* of the ADALM-Pluto.
+  * Transceiver: AD9363 (upgraded via firmware mod to AD9361 for 56 MHz bandwidth).
+  * System-on-Chip: Xilinx Zynq-7020 FPGA with 1 GB RAM.
+  * Oscillator: TCXO with 0.5 ppm accuracy to minimize frequency drift.
+  * Data Connection: Gigabit Ethernet for maximum throughput.
+* **Antennas:** GEPRC 2.4 GHz Tri-Band Stick Antennas (Omnidirectional, 3 dBi, VSWR < 1.5).
+* **Enclosure & Shielding:** Custom 3D-printed enclosure designed in Fusion 360. To shield the sensitive SDR electronics from local 2.4 GHz interference, the interior is completely lined with copper foil (Faraday cage), which is electrically isolated using Kapton tape. Active cooling is provided by a 5V fan (4020).
+* **Time Synchronization (Work-in-Progress):** u-blox NEO-6M and ATGM336H GPS modules, connected via an ESP32 microcontroller.
+
+---
+
+##  4. Script Functionality
+
+The software was developed incrementally. Each script in this repository fulfills a specific purpose in evaluating the wireless protocol:
 
 ### `01_simulation_ideal_channel.py`
-Die vollständige Basis-Simulation des Protokolls im idealen mathematischen Raum.
-* **Ablauf:** Generiert zufällige Bits $\rightarrow$ LDPC-Codierung $\rightarrow$ Symbol-Mapping (Hybrid: LoRa-Wert, Up/Down-Richtung, QPSK-Phase) $\rightarrow$ I/Q-Signal-Synthese $\rightarrow$ AWGN-Kanal (künstliches Rauschen) $\rightarrow$ Empfänger-Dechirping $\rightarrow$ LDPC-Decodierung.
-* **Prämisse:** Dieses Skript geht von einer **absolut perfekten Synchronisation** aus. Es existiert kein Carrier Frequency Offset (CFO) und kein Timing-Fehler. Es dient ausschließlich dazu, die theoretische Bitfehlerrate (BER) der Modulation unter starken Rauschbedingungen (SNR-Sweep) zu verifizieren.
+The complete basic simulation of the protocol in an ideal mathematical space.
+* **Process:** Generates random bits $\rightarrow$ LDPC encoding $\rightarrow$ Symbol mapping (Hybrid: LoRa value, up/down direction, QPSK phase) $\rightarrow$ I/Q signal synthesis $\rightarrow$ AWGN channel (artificial noise) $\rightarrow$ Receiver dechirping $\rightarrow$ LDPC decoding.
+* **Premise:** This script assumes **absolutely perfect synchronization**. There is no Carrier Frequency Offset (CFO) and no timing error. It serves exclusively to verify the theoretical Bit Error Rate (BER) of the modulation under heavy noise conditions (SNR sweep).
 
 ### `02_simulation_fft_sync.py`
-Simulation zur isolierten Entwicklung der Präambel-Erkennung und Paket-Synchronisation.
-* **Besonderheit:** Die rechenintensive LDPC-Kanalcodierung wurde hier vollständig entfernt, um Fehlerquellen bei der Erprobung der reinen Frequenz-Synchronisation auszuschließen.
-* **Synchronisations-Logik:** Die herkömmliche, extrem fehleranfällige Kreuzkorrelation im Zeitbereich wurde durch ein Schiebe-Fenster-Verfahren im Frequenzbereich ersetzt. Das Skript multipliziert das Empfangssignal mit einem lokalen Downchirp und sucht über eine Fast Fourier Transformation (FFT) nach dem charakteristischen Energie-Peak. Wiederholt sich dieser Peak bei den 16 Präambel-Symbolen im selben Frequenz-Bin, wird aus dem Bin-Index der exakte mathematische Startpunkt des Pakets (Timing-Offset) berechnet.
+Simulation for the isolated development of preamble detection and packet synchronization.
+* **Special Feature:** The computationally intensive LDPC channel coding was completely removed here to rule out sources of error when testing pure frequency synchronization.
+* **Synchronization Logic:** The conventional, highly error-prone cross-correlation in the time domain was replaced by a sliding-window method in the frequency domain. The script multiplies the received signal with a local down-chirp and searches for the characteristic energy peak using a Fast Fourier Transform (FFT). If this peak repeats in the same frequency bin for the 16 preamble symbols, the exact mathematical starting point of the packet (timing offset) is calculated from the bin index.
 
 ### `03_sdr_rx_tx_basic.py`
-Die direkte Übertragung der simplen Simulation auf die reale SDR-Hardware (ADALM-Pluto).
-* **Besonderheit:** Verzichtet auf LDPC und TDMA-Logiken. Nutzt die `adi`-Bibliothek für die Hardware-Ansteuerung über Ethernet.
-* **Funktion:** Ermöglicht das manuelle Senden und kontinuierliche Empfangen von Basis-Paketen (324 Bits) über die Luft. Es dient dem direkten Test der FFT-Synchronisation unter realen Hochfrequenz-Bedingungen.
+The direct porting of the simple simulation to the real SDR hardware (ADALM-Pluto).
+* **Special Feature:** Omits LDPC and TDMA logic. Uses the `adi` library for hardware control via Ethernet.
+* **Function:** Enables the manual transmission and continuous reception of basic packets (324 bits) over the air. It serves to directly test FFT synchronization under real RF conditions.
 
 ### `04_sdr_transceiver_full.py`
-Das vollständige und komplexeste Hardware-Skript.
-* **Inhalt:** Führt alle Komponenten zusammen: SDR-Steuerung, dynamische Rauschboden-Kalibrierung (das System misst beim Start 20-mal den Hintergrundpegel, um Schwellenwerte zu setzen), LDPC-Fehlerkorrektur und ein Time Division Multiple Access (TDMA) Verfahren.
-* **Aktueller Status:** Das TDMA-Verfahren definiert feste Zeitschlitze zum Senden und Empfangen, um Puffer-Unterläufe zu verhindern. Aufgrund des extrem ungenauen Timings (Jitter) von Windows-Betriebssystemen verpasst der Code aktuell jedoch häufig die Slot-Grenzen. Daher wird in der Praxis vorerst das einmalige Senden und das kontinuierliche Empfangen genutzt.
+The complete and most complex hardware script.
+* **Contents:** Brings all components together: SDR control, dynamic noise floor calibration (the system measures the background level 20 times at startup to set thresholds), LDPC error correction, and a Time Division Multiple Access (TDMA) method.
+* **Current Status:** The TDMA method defines fixed time slots for transmitting and receiving to prevent buffer underruns. However, due to the extremely imprecise timing (jitter) of Windows operating systems, the code currently frequently misses the slot boundaries. Therefore, for practical testing, one-time transmission and continuous reception are primarily used for now.
 
 ---
 
-##  5. Das Kernproblem: Die fehlgeschlagene Paket-Synchronisation
+##  5. The Core Problem: Failed Packet Synchronization
 
-Trotz des erfolgreichen mathematischen Proof-of-Concepts in den Simulationen, schlägt der Empfang auf der echten SDR-Hardware momentan fehl. **Das einzige, eindeutig identifizierte Kernproblem ist die Paket-Synchronisation über die Luft.**
+Despite the successful mathematical proof-of-concept in the simulations, reception on the real SDR hardware is currently failing. **The only clearly identified core problem is packet synchronization over the air.**
 
-Das System ist im realen Funkkanal nicht in der Lage, den exakten Startpunkt eines Pakets zu finden und den Puffer korrekt zu zerschneiden. Schlägt der FFT-Trigger nicht exakt an der ersten Sample-Position der Präambel an, verschieben sich alle nachfolgenden Symbolgrenzen. Ein Dechirping der Payload ist unter diesen Umständen mathematisch unmöglich.
+In the real radio channel, the system is unable to find the exact starting point of a packet and slice the buffer correctly. If the FFT trigger does not hit the exact first sample position of the preamble, all subsequent symbol boundaries shift. Dechirping the payload is mathematically impossible under these conditions.
 
-### Potenzielle Ursachen für das Versagen der Synchronisation
-Die genauen Gründe für das Scheitern des Synchronisations-Algorithmus auf dem SDR sind noch nicht isoliert, jedoch kommen folgende Faktoren als Auslöser in Betracht:
+### Potential Causes for Synchronization Failure
+The exact reasons for the failure of the synchronization algorithm on the SDR have not yet been isolated; however, the following factors are considered as potential triggers:
 
-1. **Rechenlatenz und Pufferverlust:** Die Implementierung in reinem Python (Ausführung der komplexen FFTs, Faltungen und Dechirp-Schleifen) beansprucht massiv CPU-Zeit. Es ist extrem wahrscheinlich, dass das Skript während der Berechnung eines Puffer-Blocks (Chunks) neue eintreffende Daten des SDRs verpasst und das gesendete Paket dadurch im Speicher zerschnitten oder überschrieben wird.
-2. **Carrier Frequency Offset (CFO) und Phasenrotation:** Trotz des präzisen TCXO-Oszillators weisen die Plutos bei 2.45 GHz immer einen gewissen Frequenzversatz auf. Dies führt dazu, dass sich die Phase des Funksignals während der Übertragung kontinuierlich dreht. Da 2 Bits pro Symbol in der absoluten QPSK-Phasenlage codiert sind, führt ein unkorrigierter Drift unweigerlich zur Zerstörung dieser Datenpunkte.
-3. **Massive Störsignale (Interferenzen):** Das 2.4 GHz ISM-Band ist stark ausgelastet. Hochenergetische WLAN-Bursts erzeugen Pegelspitzen im SDR, welche die Signalerkennung übersteuern oder die dynamischen Schwellenwerte (SNR-Ratio) fälschlicherweise triggern. Die Hardware-Verstärkungsregelung (AGC) kann diese Impulse nicht schnell genug glätten, ohne das eigene Signal zu verfälschen.
+1. **Computing Latency and Buffer Loss:** The implementation in pure Python (execution of complex FFTs, convolutions, and dechirp loops) demands massive CPU time. It is highly likely that while computing a buffer block (chunk), the script misses newly arriving data from the SDR, causing the transmitted packet to be sliced or overwritten in memory.
+2. **Carrier Frequency Offset (CFO) and Phase Rotation:** Despite the precise TCXO oscillator, the Plutos always exhibit a certain frequency offset at 2.45 GHz. This causes the phase of the radio signal to rotate continuously during transmission. Since 2 bits per symbol are coded in the absolute QPSK phase, an uncorrected drift inevitably leads to the destruction of these data points.
+3. **Massive Interference Signals:** The 2.4 GHz ISM band is heavily utilized. High-energy Wi-Fi bursts generate peak levels in the SDR, overloading signal detection or falsely triggering the dynamic thresholds (SNR ratio). The hardware Automatic Gain Control (AGC) cannot smooth out these impulses quickly enough without distorting the actual signal.
 
-### Lösungsansatz für die Weiterentwicklung
-Um die Software-Latenzen und das mangelhafte Betriebssystem-Timing als Fehlerquelle zu eliminieren, wird das TDMA-Verfahren in Zukunft auf eine reine Hardware-Uhr ausgelagert. Über die bestellten **u-blox NEO-6M GPS-Module** wird ein hochpräzises PPS-Signal (Pulse Per Second) an einen ESP32 geleitet, welcher die Sende- und Empfangsslots der SDRs auf die Mikrosekunde genau synchronisiert.
+### Proposed Solution for Further Development
+To eliminate software latencies and poor OS timing as error sources, the TDMA method will be offloaded to a pure hardware clock in the future. Via the ordered **u-blox NEO-6M GPS modules**, a high-precision PPS (Pulse Per Second) signal will be routed to an ESP32, which will synchronize the transmission and reception slots of the SDRs down to the microsecond.

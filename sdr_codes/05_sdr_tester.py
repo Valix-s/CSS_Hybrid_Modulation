@@ -14,17 +14,6 @@ CENTER_FREQ = 2450000000
 BUFFER_SIZE = int(SAMPLERATE * 0.01)   # 10ms pro sdr.rx()
 SF = 5
 
-# ═══════════════════════════════════════════════════════════════
-# TDMA KONFIGURATION
-# ═══════════════════════════════════════════════════════════════
-#   'A'  →  sendet in der ersten Hälfte  (0.000s – 0.500s)
-#   'B'  →  sendet in der zweiten Hälfte (0.500s – 1.000s)
-GERAET = 'B'          # ← HIER ÄNDERN
-
-SLOT_DAUER   = 0.500  # Gesamte Slot-Länge
-PUFFER_START = 0.005  # Puffer vor dem Senden
-TX_DAUER     = 0.200  # Maximale Sendezeit
-PUFFER_ENDE  = 0.005  # Puffer am Ende
 
 # ═══════════════════════════════════════════════════════════════
 # KALIBRIERUNG
@@ -32,45 +21,24 @@ PUFFER_ENDE  = 0.005  # Puffer am Ende
 KALIBRIERUNGS_FAKTOR = 0.5
 MIN_ABS_PEAK         = None
 
-# ═══════════════════════════════════════════════════════════════
-# ESP32 ZEITSYNC
-# ═══════════════════════════════════════════════════════════════
-ESP32_PORT    = "COM15"       
-ESP32_BAUD    = 1000000
-ESP32_SYNC    = True         # False = kein ESP32 angeschlossen
-esp32_serial  = None         # wird beim Start befüllt
-
 
 # ───────────────────────────────────────────────────────────────
-# ESP32 ZEITSYNC FUNKTIONEN
+# Input Generierung
 # ───────────────────────────────────────────────────────────────
 
-def sync_esp32(port: str = ESP32_PORT, baudrate: int = ESP32_BAUD):
+def generiere_test_payload(anzahl_pakete, bits_pro_paket, seed=42):
     """
-    Öffnet die serielle Verbindung zum ESP32 und wartet auf den ersten
-    GPS-Puls ('S'), um zu bestätigen, dass das Setup bereit ist.
+    Generiert EINEN deterministischen Pseudo-Zufalls-Block und 
+    kopiert ihn für alle Pakete, damit Paketverluste die BER nicht ruinieren.
     """
-    try:
-        ser = serial.Serial(port, baudrate, timeout=2)
-    except serial.SerialException as e:
-        print(f"[ESP32] ✗ Fehler beim Öffnen von {port}: {e}")
-        return None
-
-    # WICHTIG: Den Puffer leeren, falls beim Einstecken Müll gesendet wurde
-    ser.reset_input_buffer()
-
-    print("[ESP32] Warte auf den ersten GPS-Puls ('S')...", end=" ", flush=True)
+    np.random.seed(seed) 
     
-    # Warte max. 5 Sekunden auf das erste Signal
-    deadline = time.time() + 5.0
-    while time.time() < deadline:
-        if ser.read(1) == b'S':
-            print("OK – GPS Signal empfangen!")
-            return ser
-            
-    print("TIMEOUT – Kein 'S' empfangen (Blinkt die GPS-LED?)")
-    ser.close()
-    return None
+    # Nur für EIN Paket (z.B. 324 Bits) die Zufallszahlen generieren
+    ein_paket_bits = np.random.randint(0, 2, bits_pro_paket).tolist()
+    
+    # Diesen exakt selben Block X-mal hintereinander hängen
+    return ein_paket_bits * anzahl_pakete
+
 # ───────────────────────────────────────────────────────────────
 # LDPC
 # ───────────────────────────────────────────────────────────────
@@ -430,6 +398,7 @@ def finde_paket_start(rx_data, sf, bw, fs, preamble_symbols):
 
 
 def measure_fine_cfo(pre_chunk, sf, bw, fs):
+
     """Misst den exakten Frequenzfehler in Hz anhand der Phasenrotation der Präambel."""
     num_samples = int((2**sf / bw) * fs)
     t = np.arange(num_samples) / fs
@@ -461,33 +430,6 @@ def measure_fine_cfo(pre_chunk, sf, bw, fs):
     # Umrechnung von Radiant/Symbol in Hertz
     fine_cfo_hz = mean_drift_per_symbol / (2 * np.pi) / symbol_time
     return fine_cfo_hz
-# ───────────────────────────────────────────────────────────────
-# TDMA HILFSFUNKTIONEN
-# ───────────────────────────────────────────────────────────────
-
-def get_slot_pos():
-    """Position innerhalb der aktuellen Sekunde (0.0 – 1.0)."""
-    return time.time() % 1.0
-
-
-def warte_auf_tx_slot(geraet):
-    if geraet == 'A':
-        while get_slot_pos() < 0.995:
-            time.sleep(0.001)
-        while get_slot_pos() > 0.010:
-            pass
-    else:
-        while get_slot_pos() < 0.495:
-            time.sleep(0.001)
-        while get_slot_pos() < 0.500:
-            pass
-    return time.time()
-
-
-def warte_auf_rx_slot(geraet):
-    geraet_rx = 'B' if geraet == 'A' else 'A'
-    return warte_auf_tx_slot(geraet_rx)
-
 
 # ───────────────────────────────────────────────────────────────
 # MAIN
@@ -515,271 +457,34 @@ except Exception as e:
     print(f"Fehler bei der SDR-Verbindung: {e}")
     exit(1)
 
-# ── ESP32 Zeitsync ────────────────────────────────────
-if ESP32_SYNC:
-    print("\n" + "═"*50)
-    print(" ESP32 ZEITSYNC")
-    print("═"*50)
-    esp32_serial = sync_esp32(ESP32_PORT, ESP32_BAUD)
-    if esp32_serial is None:
-        print("[ESP32] Sync fehlgeschlagen – fahre ohne ESP32 fort.")
-        ESP32_SYNC = False
-    print("═"*50)
-
 N_PREAMBLE_SYMBOLS = 16
 preamble_symbole   = [(0, 1, 0)] * 8 + [(0, 0, 0)] * 8
 
-print("\n#################################################################")
-print(f" Start des Programmes  –  Gerät: {GERAET}")
-print(f" Slot-Schema:")
-print(f"   Sender A sendet: 0.000s – 0.500s  (TX dann RX)")
-print(f"   Sender B sendet: 0.500s – 1.000s  (RX dann TX)")
-print(f" Timing pro Slot:")
-print(f"   {PUFFER_START*1000:.0f}ms Puffer → {TX_DAUER*1000:.0f}ms Senden → "
-      f"{(SLOT_DAUER-PUFFER_START-TX_DAUER-PUFFER_ENDE)*1000:.0f}ms Decodieren → "
-      f"{PUFFER_ENDE*1000:.0f}ms Puffer")
-if ESP32_SYNC:
-    print(f" ESP32 Zeitsync: AKTIV auf {ESP32_PORT}")
-print("#################################################################")
-
-MIN_ABS_PEAK = kalibriere_rauschboden(
-    sdr, SF, BANDWIDTH, SAMPLERATE, preamble_symbole, n=20
-)
 
 while True:
     print("\n" + "="*40)
     state = input(
         "Was möchtest du tun?\n"
-        " [t] TDMA starten\n"
         " [s] Einmalig senden\n"
-        " [e] Manuell empfangen (Strg+C = stopp + decodieren)\n"
+        " [e] Empfangen (Strg+C = stopp + decodieren)\n"
         " [q] Beenden\n"
         "Deine Wahl: "
     ).strip().lower()
 
     # ── BEENDEN ───────────────────────────────────────────────────────────
     if state == "q":
-        if esp32_serial and esp32_serial.is_open:
-            esp32_serial.close() 
         print("Tschüss!")
         break
-
-    
-    # ── TDMA ──────────────────────────────────────────────────────────────
-    elif state == "t":
-        print(f"\n--- TDMA MODUS (Gerät {GERAET}) ---")
-        eingabe = input(f"Gib bis zu {k_bits} Bits ein: ")
-        try:
-            bits = [int(b) for b in eingabe]
-        except ValueError:
-            print("[Fehler] Nur 0 und 1 erlaubt.")
-            continue
-        if len(bits) < k_bits:
-            bits.extend([0] * (k_bits - len(bits)))
-        elif len(bits) > k_bits:
-            print(f"[Fehler] Maximal {k_bits} Bits.")
-            continue
-
-        codeword   = ldpc_encode(bits, g_matrix)
-        symbole_tx = preamble_symbole + bits_zu_symbolen(codeword, SF)
-        tx_signal  = generate_signal(symbole_tx, SF, BANDWIDTH, SAMPLERATE)
-        funk_ms    = len(tx_signal) / SAMPLERATE * 1000
-
-        print(f"Signal bereit: {len(tx_signal)} Samples = {funk_ms:.2f}ms über Funk")
-        print("Drücke Strg+C um zu stoppen.\n")
-
-        TX_DELAY = 0.020  # 20ms Verzögerung für den Sender
-        SLOT_DAUER = 0.500 # 500ms pro Slot
-
-        try:
-            runde = 0
-            if esp32_serial and esp32_serial.is_open:
-                esp32_serial.reset_input_buffer()
-
-            while True:
-                runde += 1
-                print(f"\n─── Runde {runde} ───────────────────────────────")
-
-                # 1. AUF DEN GPS-SEKUNDENSCHLAG WARTEN (mit integriertem Staubsauger!)
-                print(f"[{GERAET}] Warte auf exakten Sekundenstart...", end='\r')
-                
-                if esp32_serial and esp32_serial.is_open:
-                    esp32_serial.reset_input_buffer() 
-                    while True:
-                        # 1. Schauen, ob das GPS ein 'S' geschickt hat (ohne zu blockieren!)
-                        if esp32_serial.in_waiting > 0:
-                            if esp32_serial.read(1) == b'S':
-                                t_start = time.time()
-                                break
-                        # 2. Wenn noch kein 'S' da ist, saugen wir gnadenlos alte Daten aus dem Puffer!
-                        try:
-                            _ = sdr.rx()
-                        except:
-                            pass
-                else:
-                    # Fallback für Windows-Uhr (ebenfalls mit Staubsauger)
-                    while time.time() % 1.0 > 0.005: 
-                        _ = sdr.rx()
-                    while time.time() % 1.0 < 0.995: 
-                        _ = sdr.rx()
-                    t_start = time.time()
-
-                ts = time.strftime('%H:%M:%S')
-                print(f"[{GERAET}] ⏱ Sekunde gestartet @ {ts}.000")
-
-                rx_buffers = []
-
-                # ==============================================================
-                # GERÄT A LOGIK
-                # ==============================================================
-                if GERAET == 'A':
-                    # --- SLOT 1: SENDEN ---
-                    while time.time() - t_start < TX_DELAY:
-                        pass  
-                        
-                    print(f"[{GERAET}] Sende Daten (20ms Offset)...")
-                    sdr.tx(tx_signal)
-                    
-                    # Die restliche Zeit bis Slot 2 (0.500s) nutzen wir zum Puffer leeren!
-                    while time.time() - t_start < 0.490:
-                        _ = sdr.rx()
-                    while time.time() - t_start < SLOT_DAUER:
-                        pass # Die letzten 10ms perfekt warten
-                        
-                    # --- SLOT 2: EMPFANGEN ---
-                    print(f"[{GERAET}] Starte Empfang (Slot 2)...")
-                    # Nur 50ms zuhören! (deckt 20ms Offset + 3ms Paket locker ab)
-                    rx_deadline = t_start + SLOT_DAUER + 0.050  
-                    while time.time() < rx_deadline: 
-                        rx_buffers.append(sdr.rx())
-
-                # ==============================================================
-                # GERÄT B LOGIK
-                # ==============================================================
-                elif GERAET == 'B':
-                    # --- SLOT 1: EMPFANGEN ---
-                    print(f"[{GERAET}] Starte Empfang (Slot 1, sofort)...")
-                    # Nur 50ms zuhören! (deckt 20ms Offset + 3ms Paket locker ab)
-                    rx_deadline = t_start + 0.050  
-                    while time.time() < rx_deadline:
-                        rx_buffers.append(sdr.rx())
-                        
-                    # --- SLOT 2: SENDEN ---
-                    # Die Zeit bis zum eigenen Senden nutzen wir zum Puffer leeren!
-                    while time.time() - t_start < (SLOT_DAUER + TX_DELAY - 0.010):
-                        _ = sdr.rx()
-                    while time.time() - t_start < (SLOT_DAUER + TX_DELAY):
-                        pass # Die letzten 10ms perfekt warten
-                        
-                    print(f"[{GERAET}] Sende Daten (20ms Offset)...")
-                    sdr.tx(tx_signal)
-
-                # ==============================================================
-                # GEMEINSAMES DECODIEREN
-                # ==============================================================
-                print(f"[{GERAET}] Funk-Slots beendet. Decodiere gesammelte Daten...")
-                
-                t_dec = time.time()
-                if not rx_buffers:
-                    print(f"[{GERAET}] ✗ Keine Daten empfangen.")
-                else:
-                    full_rx = np.concatenate(rx_buffers)
-                    
-                    try:
-                        p_start = finde_paket_start(
-                            full_rx, SF, BANDWIDTH, SAMPLERATE,
-                            preamble_symbole, min_abs_peak=MIN_ABS_PEAK
-                        )
-                    except TypeError:
-                        p_start = finde_paket_start(
-                            full_rx, SF, BANDWIDTH, SAMPLERATE,
-                            preamble_symbole
-                        )
-
-                    if p_start == -1:
-                        print(f"[{GERAET}] ✗ Kein Paket im Slot gefunden.")
-                    else:
-                        num_s      = int((2**SF / BANDWIDTH) * SAMPLERATE)
-                        pre_len    = N_PREAMBLE_SYMBOLS * num_s
-                        n_bits     = h_matrix.shape[1]
-                        
-                        block_size = SF + 3
-                        pay_syms   = int(np.ceil(n_bits / float(block_size)))
-                        pay_len    = pay_syms * num_s
-
-                        # PRÄAMBEL-FIX
-                        while p_start >= num_s:
-                            test_chunk = full_rx[p_start - num_s : p_start]
-                            sym = signal_dechirp(test_chunk, SF, BANDWIDTH, SAMPLERATE)
-                            if len(sym) > 0 and sym[0][1] == 1: 
-                                val = sym[0][0]
-                                if val <= 3 or val >= (2**SF) - 3:
-                                    p_start -= num_s  
-                                else:
-                                    break 
-                            else:
-                                break 
-
-                        if p_start + pre_len + pay_len > len(full_rx):
-                            print(f"[{GERAET}] ✗ Paket abgeschnitten.")
-                        else:
-                            pre_chunk = full_rx[p_start : p_start + pre_len]
-                            pre_syms  = signal_dechirp(pre_chunk, SF, BANDWIDTH, SAMPLERATE)
-                            up_b, dn_b = [], []
-                            for lv, dr, _ in pre_syms:
-                                sb = lv if lv < (2**SF)//2 else lv - (2**SF)
-                                (up_b if dr == 1 else dn_b).append(sb)
-                                
-                            if up_b and dn_b:
-                                mean_up = sum(up_b) / len(up_b)
-                                mean_dn = sum(dn_b) / len(dn_b)
-                                cfo_bin = (mean_up - mean_dn) / 2.0
-                                t_bin   = (mean_up + mean_dn) / 2.0
-                            else:
-                                cfo_bin = 0.0
-                                t_bin   = 0.0
-                                
-                            t_off = int(t_bin * (SAMPLERATE / BANDWIDTH))
-                            pay_start = p_start + pre_len + t_off
-                            pay_end   = pay_start + pay_len
-                            
-                            if pay_end <= len(full_rx):
-                                payload = full_rx[pay_start:pay_end]
-                                coarse_cfo_hz = cfo_bin * (SAMPLERATE / num_s)
-                                
-                                try:
-                                    fine_cfo_hz = measure_fine_cfo(pre_chunk, SF, BANDWIDTH, SAMPLERATE)
-                                except NameError:
-                                    fine_cfo_hz = 0.0
-                                    
-                                total_cfo_hz = coarse_cfo_hz + fine_cfo_hz
-                                t_arr = np.arange(len(payload)) / SAMPLERATE
-                                payload_corrected = payload * np.exp(-1j * 2 * np.pi * total_cfo_hz * t_arr)
-                                
-                                pay_syms_rx = signal_dechirp(payload_corrected, SF, BANDWIDTH, SAMPLERATE)
-                                decoded = ldpc_decode(pay_syms_rx, h_matrix, SF)
-                                
-                                print(f"[{GERAET}] ✓ EMPFANGEN in {(time.time()-t_dec)*1000:.0f}ms (Drift: {total_cfo_hz:.0f} Hz)")
-                                print(f"         Bits: {decoded.tolist()}")
-                            else:
-                                print(f"[{GERAET}] ✗ Payload außerhalb Buffer.")
-
-        except KeyboardInterrupt:
-            print(f"\n[{GERAET}] TDMA gestoppt.")
 
 
     # ── EINMALIG SENDEN ───────────────────────────────────────────────────
     elif state == "s":
+        file_name = input("Gib den gespeicherten Daten einen Namen (ohne .txt): ").strip()
+        if not file_name:
+            file_name = "tx_dump"
+            
         print("\n--- SENDE PFAD ---")
-        max_bits = 1296  # 4 Pakete à 324 Bits
-        eingabe = input(f"Bits eingeben (max {max_bits}) oder 'q': ")
-        if eingabe.lower() == 'q':
-            continue
-        try:
-            bits = [int(b) for b in eingabe]
-        except ValueError:
-            print("[Fehler] Nur 0 und 1 erlaubt.")
-            continue
+        bits = generiere_test_payload(1, 324)
             
         # Auffüllen auf das nächste Vielfache von k_bits (324)
         if len(bits) == 0:
@@ -787,31 +492,78 @@ while True:
         while len(bits) % k_bits != 0:
             bits.append(0)
             
-        if len(bits) > max_bits:
-            print(f"[Fehler] Max {max_bits} Bits erlaubt.")
-            continue
-
-        print(f"Verarbeite {len(bits)} Bits in {len(bits)//k_bits} Blöcken à {k_bits} Bits...")
+        anzahl_bloecke = len(bits) // k_bits
+        print(f"Verarbeite {len(bits)} Bits in {anzahl_bloecke} Blöcken à {k_bits} Bits...")
         
         alle_signale = []
+        detailed_log = [] # Hier speichern wir die langen Datensätze zwischen
+        
         for i in range(0, len(bits), k_bits):
             chunk = bits[i:i+k_bits]
             codeword  = ldpc_encode(chunk, g_matrix)
+            
             if codeword is None:
                 continue
+                
             symbole   = preamble_symbole + bits_zu_symbolen(codeword, SF)
+            
+            if isinstance(codeword, np.ndarray):
+                codeword_list = codeword.tolist()
+            else:
+                codeword_list = codeword
+                
+            block_nr = (i // k_bits) + 1
+            
+            # Detail-Daten in den Speicher legen
+            detail_str = f"--- Block {block_nr} ---\n"
+            detail_str += f"Codierte Bits (LDPC):\n{codeword_list}\n\n"
+            detail_str += f"Symbole (LoRa-Wert, Richtung, QPSK-Wert):\n{symbole}\n\n"
+            detail_str += "-" * 40 + "\n\n"
+            detailed_log.append(detail_str)
+            
             tx_signal = generate_signal(symbole, SF, BANDWIDTH, SAMPLERATE)
             alle_signale.append(tx_signal)
             
         if alle_signale:
             final_tx_signal = np.concatenate(alle_signale)
+            
+            # ───────────────────────────────────────────────────────────
+            # TXT-Datei schreiben (Übersicht oben, Details unten)
+            # ───────────────────────────────────────────────────────────
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+            with open(f"{file_name}.txt", "w", encoding="utf-8") as f:
+                # 1. KOPFDATEN & ÜBERSICHT
+                f.write("="*60 + "\n")
+                f.write(" SDR SENDE-PROTOKOLL\n")
+                f.write("="*60 + "\n")
+                f.write(f"Datum / Zeit : {timestamp}\n")
+                f.write(f"Konfiguration: SF={SF}, Bandbreite={BANDWIDTH/1e6} MHz, Samplerate={SAMPLERATE/1e6} MSPS\n")
+                f.write(f"Gesamt Bits  : {len(bits)} (Nutzdaten)\n")
+                f.write(f"Total Pakete : {anzahl_bloecke}\n")
+                f.write("="*60 + "\n\n")
+                
+                # 2. GENERIERTE PAYLOAD
+                f.write("ROHE NUTZDATEN (Raw Payload, uncodiert):\n")
+                f.write(f"{bits}\n\n")
+                f.write("="*60 + "\n\n")
+                
+                # 3. DIE LANGEN DATENSÄTZE
+                f.write("DETAILLIERTE PAKET-DATEN (LDPC & Symbole):\n\n")
+                for log_teil in detailed_log:
+                    f.write(log_teil)
+
             print(f"Sende {len(alle_signale)} zusammenhängende Pakete in einem Burst...")
+            print(f"💾 Die Log-Daten (Übersicht zuerst) wurden in '{file_name}.txt' gespeichert!")
             sdr.tx(final_tx_signal)
             print("Gesendet!")
 
-    
-    # ── MANUELL EMPFANGEN (Strg+C → decodieren) ───────────────────────────
+
+    # ── EMPFANGEN (Strg+C → decodieren) ───────────────────────────
     elif state == "e":
+        file_name = input("Gib den Namen für die Empfangs-Logdatei ein (ohne .txt): ").strip()
+        if not file_name:
+            file_name = "rx_dump"
+
         print("\n--- MANUELL EMPFANGEN ---")
         print("Empfange... Drücke Strg+C um zu stoppen und zu decodieren.\n")
         rx_buffers = []
@@ -831,18 +583,16 @@ while True:
 
         full_rx = np.concatenate(rx_buffers)
 
-        # ───────────────────────────────────────────────────────────────
-        # I/Q DATEN SPEICHERN
-        # ───────────────────────────────────────────────────────────────
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         dateiname = f"iq_dump_{timestamp}.npy"
         np.save(dateiname, full_rx)
         print(f"\n[DEBUG] 💾 Rohe I/Q-Daten gespeichert in: {dateiname}")
-        # ───────────────────────────────────────────────────────────────
 
         search_offset = 0
         alle_decodierten_bits = []
         paket_nr = 0
+        gesamt_bit_fehler = 0
+        gesamt_korrigiert = 0
         
         num_s    = int((2**SF / BANDWIDTH) * SAMPLERATE)
         pre_len  = N_PREAMBLE_SYMBOLS * num_s
@@ -852,10 +602,12 @@ while True:
         pay_syms = int(np.ceil(n_bits / float(block_size)))
         pay_len  = pay_syms * num_s
 
+        expected_total_payload = generiere_test_payload(100, k_bits)
+        
+        detailed_log = [] # Speicher für die langen Paket-Datensätze
+        txt_timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+
         while True:
-            # ───────────────────────────────────────────────────────────
-            # DEIN BRUTE-FORCE AUFRUF
-            # ───────────────────────────────────────────────────────────
             kandidaten = finde_paket_start_bruteforce(
                 full_rx[search_offset:], SF, BANDWIDTH, SAMPLERATE,
                 preamble_symbole, top_n=10, value_tolerance=3, verbose=True
@@ -868,11 +620,8 @@ while True:
                     print(f"\n--- Ende des Streams. {paket_nr} Pakete gefunden. ---")
                 break
 
-            # Der beste Kandidat steht an Index 0 (von deiner Funktion sortiert)
             best_offset, best_score, best_match, pre_syms = kandidaten[0]
 
-            # Überprüfen, ob der Match gut genug ist. 
-            # Die Präambel hat 16 Symbole. Wenn z.B. weniger als 10 passen, ist es Rauschen.
             MIN_MATCH_REQUIRED = 10
             if best_match < MIN_MATCH_REQUIRED:
                 if paket_nr == 0:
@@ -881,7 +630,6 @@ while True:
                     print(f"\n--- Ende des Streams. ---")
                 break
 
-            # Absolute Startposition im Array
             p_start = search_offset + best_offset
             paket_nr += 1
             print(f"\n[Paket {paket_nr}] Präambel bei Index {p_start} (Match: {best_match}/{N_PREAMBLE_SYMBOLS})!")
@@ -890,9 +638,6 @@ while True:
                 print("✗ Paket abgeschnitten – Puffer zu Ende.")
                 break
             
-            # ───────────────────────────────────────────────────────────
-            # TIMING UND CFO BERECHNEN (Basierend auf den getesteten pre_syms)
-            # ───────────────────────────────────────────────────────────
             up_b, dn_b = [], []
             for lv, dr, _ in pre_syms:
                 sb = lv if lv < (2**SF)//2 else lv - (2**SF)
@@ -908,54 +653,104 @@ while True:
                 t_bin   = 0.0
                 
             t_off = int(t_bin * (SAMPLERATE / BANDWIDTH))
-
             pay_start   = p_start + pre_len + t_off
             pay_end     = pay_start + pay_len
             
             if pay_end <= len(full_rx):
                 payload = full_rx[pay_start:pay_end]
                 
-                # -----------------------------------------------------------
-                # --- NEU: ABSOLUTE CFO KORREKTUR FÜR MANUELLEN EMPFANG ---
-                # -----------------------------------------------------------
                 coarse_cfo_hz = cfo_bin * (SAMPLERATE / num_s)
-                
-                # pre_chunk müssen wir uns hier kurz greifen, da wir die Position p_start kennen
                 pre_chunk = full_rx[p_start : p_start + pre_len]
                 fine_cfo_hz = measure_fine_cfo(pre_chunk, SF, BANDWIDTH, SAMPLERATE)
-                
                 total_cfo_hz = coarse_cfo_hz + fine_cfo_hz
-                print(f" [DEBUG] Gemessener Drift: {total_cfo_hz:.0f} Hz")
                 
                 t_arr = np.arange(len(payload)) / SAMPLERATE
                 payload_corrected = payload * np.exp(-1j * 2 * np.pi * total_cfo_hz * t_arr)
-                # -----------------------------------------------------------
                 
-                # Payload demodulieren und decodieren
                 pay_syms_rx = signal_dechirp(
                     payload_corrected, SF, BANDWIDTH, SAMPLERATE
                 )
-                print(pay_syms_rx)
                 
                 decoded = ldpc_decode(pay_syms_rx, h_matrix, SF)
                 alle_decodierten_bits.extend(decoded.tolist())
-                print(f" ✓ Payload {paket_nr} erfolgreich decodiert!")
                 
-                # WICHTIG: Den Such-Zeiger direkt hinter das aktuelle Paket schieben
+                # STATISTIKEN BERECHNEN
+                raw_rx_bits = []
+                for lora_val, dir_val, qpsk_val in pay_syms_rx:
+                    for b in format(lora_val, f'0{SF}b'): raw_rx_bits.append(int(b))
+                    raw_rx_bits.append(int(dir_val))
+                    for b in format(qpsk_val, '02b'): raw_rx_bits.append(int(b))
+                    
+                ideal_codeword = ldpc_encode(decoded, g_matrix)
+                korrigierte_fehler = 0
+                if ideal_codeword is not None:
+                    korrigierte_fehler = sum(1 for a, b in zip(raw_rx_bits[:n_bits], ideal_codeword) if a != b)
+                    gesamt_korrigiert += korrigierte_fehler
+                    
+                expected_chunk = expected_total_payload[(paket_nr - 1) * k_bits : paket_nr * k_bits]
+                bit_fehler = sum(1 for a, b in zip(decoded, expected_chunk) if a != b)
+                gesamt_bit_fehler += bit_fehler
+                
+                # DETAILS IN DEN ZWISCHENSPEICHER SCHREIBEN
+                detail_str = f"--- Paket {paket_nr} ---\n"
+                detail_str += f"Statistik pro Paket: LDPC hat {korrigierte_fehler} Fehler repariert | Unkorrigierbare Bitfehler (BER): {bit_fehler}\n\n"
+                detail_str += f"Decodierte Bits:\n{decoded.tolist()}\n\n"
+                detail_str += f"Empfangene Symbole:\n{pay_syms_rx}\n\n"
+                detail_str += "-" * 40 + "\n\n"
+                detailed_log.append(detail_str)
+
+                print(f" ✓ Payload {paket_nr} erfolgreich decodiert! (Bitfehler: {bit_fehler} | Korrigiert: {korrigierte_fehler})")
                 search_offset = pay_end
             else:
                 print("✗ Payload außerhalb Buffer.")
                 break
 
+        # ───────────────────────────────────────────────────────────
+        # DATEI SCHREIBEN: ÜBERSICHT OBEN, LANGE DATEN UNTEN
+        # ───────────────────────────────────────────────────────────
         if alle_decodierten_bits:
+            total_bits = len(alle_decodierten_bits)
+            ber_prozent = (gesamt_bit_fehler / total_bits) * 100 if total_bits > 0 else 0
+            
+            with open(f"{file_name}.txt", "w", encoding="utf-8") as f:
+                # 1. KOPFDATEN & ZUSAMMENFASSUNG
+                f.write("="*60 + "\n")
+                f.write(" SDR EMPFANGS-PROTOKOLL & BER-ANALYSE\n")
+                f.write("="*60 + "\n")
+                f.write(f"Datum / Zeit : {txt_timestamp}\n")
+                # HIER IST DER VERWEIS AUF DIE I/Q-DATEN:
+                f.write(f"I/Q-Rohdaten : {dateiname} (als komprimiertes NumPy-Array gespeichert)\n")
+                f.write(f"Konfiguration: SF={SF}, Bandbreite={BANDWIDTH/1e6} MHz, Samplerate={SAMPLERATE/1e6} MSPS\n\n")
+                
+                f.write("GESAMT-STATISTIK:\n")
+                f.write(f"Total empfangene Pakete     : {paket_nr}\n")
+                f.write(f"Total empfangene Nutzbits   : {total_bits}\n")
+                f.write(f"Gesamt Hardware-Fehler      : {gesamt_korrigiert} (durch LDPC erfolgreich repariert)\n")
+                f.write(f"Gesamt fehlerhafte Nutzbits : {gesamt_bit_fehler} (unkorrigierbar)\n")
+                f.write(f"Finale Bit Error Rate (BER) : {ber_prozent:.4f}%\n")
+                f.write("="*60 + "\n\n")
+                
+                # 2. GENERIERTE (EMPFANGENE) PAYLOAD
+                f.write("GESAMTER EMPFANGENER BITSTREAM (Decodiert):\n")
+                bit_string = "".join(str(b) for b in alle_decodierten_bits)
+                f.write(f"{bit_string}\n\n")
+                f.write("="*60 + "\n\n")
+                
+                # 3. DIE LANGEN PAKET-DATENSÄTZE
+                f.write("DETAILLIERTE PAKET-DATEN (Symbole & Array-Dumps):\n\n")
+                for log_teil in detailed_log:
+                    f.write(log_teil)
+
+            print(f"\n💾 Analyse abgeschlossen. Log gespeichert unter: '{file_name}.txt'")
+            print(f"🔗 Die zugehörigen I/Q-Rohdaten liegen in: '{dateiname}'")
             print("\n" + "="*50)
-            print(f" ✓ GESAMT-PAYLOAD DECODIERT ({len(alle_decodierten_bits)} Bits)")
-            
-            # Die Liste in einen schönen, lesbaren String umwandeln (z.B. "010110...")
-            bit_string = "".join(str(b) for b in alle_decodierten_bits)
-            print(f" Bits:  {bit_string}")
-            
+            print(f" ✓ GESAMT-STATISTIK ({total_bits} Bits)")
+            print(f"   - Korrigierte Hardware-Fehler : {gesamt_korrigiert}")
+            print(f"   - Verbleibende Bitfehler      : {gesamt_bit_fehler}")
+            print(f"   - Bit Error Rate (BER)        : {ber_prozent:.4f}%")
             print("="*50)
+
+
 
     else:
         print("Ungültige Eingabe.")

@@ -1,0 +1,824 @@
+SDR TDMA-TEST | BER: 0.4630%
+Runden: 200/200 | Empfangen: 194 | Korrigiert: 923
+
+--- Runde 5 (Paket 1) ---
+Drift: 1032Hz | LDPC: 18 | BER: 0
+
+--- Runde 7 (Paket 2) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 8 (Paket 3) ---
+Drift: 957Hz | LDPC: 0 | BER: 0
+
+--- Runde 8 (Paket 4) ---
+Drift: -55562Hz | LDPC: 183 | BER: 143
+
+--- Runde 9 (Paket 5) ---
+Drift: 1015Hz | LDPC: 0 | BER: 0
+
+--- Runde 10 (Paket 6) ---
+Drift: 945Hz | LDPC: 17 | BER: 0
+
+--- Runde 11 (Paket 7) ---
+Drift: 1014Hz | LDPC: 0 | BER: 0
+
+--- Runde 12 (Paket 8) ---
+Drift: 953Hz | LDPC: 0 | BER: 0
+
+--- Runde 13 (Paket 9) ---
+Drift: 973Hz | LDPC: 0 | BER: 0
+
+--- Runde 14 (Paket 10) ---
+Drift: 944Hz | LDPC: 5 | BER: 0
+
+--- Runde 15 (Paket 11) ---
+Drift: 954Hz | LDPC: 2 | BER: 0
+
+--- Runde 16 (Paket 12) ---
+Drift: 964Hz | LDPC: 0 | BER: 0
+
+--- Runde 17 (Paket 13) ---
+Drift: 950Hz | LDPC: 0 | BER: 0
+
+--- Runde 18 (Paket 14) ---
+Drift: 949Hz | LDPC: 0 | BER: 0
+
+--- Runde 19 (Paket 15) ---
+Drift: 960Hz | LDPC: 24 | BER: 0
+
+--- Runde 20 (Paket 16) ---
+Drift: 997Hz | LDPC: 0 | BER: 0
+
+--- Runde 21 (Paket 17) ---
+Drift: 963Hz | LDPC: 0 | BER: 0
+
+--- Runde 22 (Paket 18) ---
+Drift: 967Hz | LDPC: 0 | BER: 0
+
+--- Runde 23 (Paket 19) ---
+Drift: 944Hz | LDPC: 0 | BER: 0
+
+--- Runde 24 (Paket 20) ---
+Drift: 969Hz | LDPC: 7 | BER: 0
+
+--- Runde 25 (Paket 21) ---
+Drift: 1018Hz | LDPC: 0 | BER: 0
+
+--- Runde 26 (Paket 22) ---
+Drift: 918Hz | LDPC: 0 | BER: 0
+
+--- Runde 27 (Paket 23) ---
+Drift: 957Hz | LDPC: 0 | BER: 0
+
+--- Runde 28 (Paket 24) ---
+Drift: 926Hz | LDPC: 22 | BER: 0
+
+--- Runde 29 (Paket 25) ---
+Drift: 938Hz | LDPC: 0 | BER: 0
+
+--- Runde 30 (Paket 26) ---
+Drift: 966Hz | LDPC: 0 | BER: 0
+
+--- Runde 31 (Paket 27) ---
+Drift: 973Hz | LDPC: 0 | BER: 0
+
+--- Runde 32 (Paket 28) ---
+Drift: 910Hz | LDPC: 4 | BER: 0
+
+--- Runde 33 (Paket 29) ---
+Drift: 934Hz | LDPC: 0 | BER: 0
+
+--- Runde 35 (Paket 30) ---
+Drift: 987Hz | LDPC: 0 | BER: 0
+
+--- Runde 36 (Paket 31) ---
+Drift: 917Hz | LDPC: 0 | BER: 0
+
+--- Runde 37 (Paket 32) ---
+Drift: 921Hz | LDPC: 18 | BER: 0
+
+--- Runde 38 (Paket 33) ---
+Drift: 963Hz | LDPC: 0 | BER: 0
+
+--- Runde 39 (Paket 34) ---
+Drift: 984Hz | LDPC: 0 | BER: 0
+
+--- Runde 40 (Paket 35) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 41 (Paket 36) ---
+Drift: 907Hz | LDPC: 14 | BER: 0
+
+--- Runde 42 (Paket 37) ---
+Drift: 905Hz | LDPC: 0 | BER: 0
+
+--- Runde 43 (Paket 38) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 44 (Paket 39) ---
+Drift: 957Hz | LDPC: 0 | BER: 0
+
+--- Runde 45 (Paket 40) ---
+Drift: 880Hz | LDPC: 0 | BER: 0
+
+--- Runde 46 (Paket 41) ---
+Drift: 964Hz | LDPC: 2 | BER: 0
+
+--- Runde 47 (Paket 42) ---
+Drift: 998Hz | LDPC: 0 | BER: 0
+
+--- Runde 48 (Paket 43) ---
+Drift: 930Hz | LDPC: 0 | BER: 0
+
+--- Runde 49 (Paket 44) ---
+Drift: 956Hz | LDPC: 0 | BER: 0
+
+--- Runde 50 (Paket 45) ---
+Drift: 962Hz | LDPC: 24 | BER: 0
+
+--- Runde 51 (Paket 46) ---
+Drift: 960Hz | LDPC: 0 | BER: 0
+
+--- Runde 52 (Paket 47) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 53 (Paket 48) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 54 (Paket 49) ---
+Drift: 982Hz | LDPC: 11 | BER: 0
+
+--- Runde 55 (Paket 50) ---
+Drift: 959Hz | LDPC: 0 | BER: 0
+
+--- Runde 56 (Paket 51) ---
+Drift: 994Hz | LDPC: 0 | BER: 0
+
+--- Runde 57 (Paket 52) ---
+Drift: 943Hz | LDPC: 0 | BER: 0
+
+--- Runde 58 (Paket 53) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 59 (Paket 54) ---
+Drift: 970Hz | LDPC: 17 | BER: 0
+
+--- Runde 60 (Paket 55) ---
+Drift: 967Hz | LDPC: 0 | BER: 0
+
+--- Runde 61 (Paket 56) ---
+Drift: 947Hz | LDPC: 0 | BER: 0
+
+--- Runde 62 (Paket 57) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 63 (Paket 58) ---
+Drift: 1013Hz | LDPC: 9 | BER: 0
+
+--- Runde 64 (Paket 59) ---
+Drift: 978Hz | LDPC: 0 | BER: 0
+
+--- Runde 65 (Paket 60) ---
+Drift: 942Hz | LDPC: 0 | BER: 0
+
+--- Runde 66 (Paket 61) ---
+Drift: 950Hz | LDPC: 0 | BER: 0
+
+--- Runde 67 (Paket 62) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 68 (Paket 63) ---
+Drift: 989Hz | LDPC: 11 | BER: 0
+
+--- Runde 69 (Paket 64) ---
+Drift: 979Hz | LDPC: 0 | BER: 0
+
+--- Runde 70 (Paket 65) ---
+Drift: 959Hz | LDPC: 0 | BER: 0
+
+--- Runde 71 (Paket 66) ---
+Drift: 987Hz | LDPC: 0 | BER: 0
+
+--- Runde 72 (Paket 67) ---
+Drift: 1046Hz | LDPC: 14 | BER: 0
+
+--- Runde 73 (Paket 68) ---
+Drift: 982Hz | LDPC: 0 | BER: 0
+
+--- Runde 74 (Paket 69) ---
+Drift: 994Hz | LDPC: 0 | BER: 0
+
+--- Runde 75 (Paket 70) ---
+Drift: 949Hz | LDPC: 0 | BER: 0
+
+--- Runde 76 (Paket 71) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 77 (Paket 72) ---
+Drift: 933Hz | LDPC: 22 | BER: 0
+
+--- Runde 78 (Paket 73) ---
+Drift: 995Hz | LDPC: 0 | BER: 0
+
+--- Runde 79 (Paket 74) ---
+Drift: 924Hz | LDPC: 0 | BER: 0
+
+--- Runde 80 (Paket 75) ---
+Drift: 978Hz | LDPC: 0 | BER: 0
+
+--- Runde 81 (Paket 76) ---
+Drift: 947Hz | LDPC: 1 | BER: 0
+
+--- Runde 82 (Paket 77) ---
+Drift: 938Hz | LDPC: 9 | BER: 0
+
+--- Runde 83 (Paket 78) ---
+Drift: 955Hz | LDPC: 0 | BER: 0
+
+--- Runde 84 (Paket 79) ---
+Drift: 1028Hz | LDPC: 0 | BER: 0
+
+--- Runde 85 (Paket 80) ---
+Drift: 955Hz | LDPC: 0 | BER: 0
+
+--- Runde 85 (Paket 81) ---
+Drift: -40034Hz | LDPC: 159 | BER: 148
+
+--- Runde 86 (Paket 82) ---
+Drift: 926Hz | LDPC: 17 | BER: 0
+
+--- Runde 87 (Paket 83) ---
+Drift: 940Hz | LDPC: 0 | BER: 0
+
+--- Runde 88 (Paket 84) ---
+Drift: 906Hz | LDPC: 0 | BER: 0
+
+--- Runde 89 (Paket 85) ---
+Drift: 986Hz | LDPC: 0 | BER: 0
+
+--- Runde 90 (Paket 86) ---
+Drift: 957Hz | LDPC: 3 | BER: 0
+
+--- Runde 91 (Paket 87) ---
+Drift: 953Hz | LDPC: 0 | BER: 0
+
+--- Runde 92 (Paket 88) ---
+Drift: 968Hz | LDPC: 0 | BER: 0
+
+--- Runde 93 (Paket 89) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 94 (Paket 90) ---
+Drift: 924Hz | LDPC: 0 | BER: 0
+
+--- Runde 95 (Paket 91) ---
+Drift: 923Hz | LDPC: 4 | BER: 0
+
+--- Runde 96 (Paket 92) ---
+Drift: 925Hz | LDPC: 0 | BER: 0
+
+--- Runde 97 (Paket 93) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 98 (Paket 94) ---
+Drift: 935Hz | LDPC: 0 | BER: 0
+
+--- Runde 99 (Paket 95) ---
+Drift: 873Hz | LDPC: 17 | BER: 0
+
+--- Runde 100 (Paket 96) ---
+Drift: 926Hz | LDPC: 0 | BER: 0
+
+--- Runde 101 (Paket 97) ---
+Drift: 960Hz | LDPC: 0 | BER: 0
+
+--- Runde 102 (Paket 98) ---
+Drift: 964Hz | LDPC: 0 | BER: 0
+
+--- Runde 103 (Paket 99) ---
+Drift: 963Hz | LDPC: 6 | BER: 0
+
+--- Runde 104 (Paket 100) ---
+Drift: 949Hz | LDPC: 0 | BER: 0
+
+--- Runde 105 (Paket 101) ---
+Drift: 944Hz | LDPC: 0 | BER: 0
+
+--- Runde 106 (Paket 102) ---
+Drift: 955Hz | LDPC: 0 | BER: 0
+
+--- Runde 108 (Paket 103) ---
+Drift: 963Hz | LDPC: 18 | BER: 0
+
+--- Runde 109 (Paket 104) ---
+Drift: 926Hz | LDPC: 0 | BER: 0
+
+--- Runde 110 (Paket 105) ---
+Drift: 987Hz | LDPC: 0 | BER: 0
+
+--- Runde 111 (Paket 106) ---
+Drift: 949Hz | LDPC: 0 | BER: 0
+
+--- Runde 112 (Paket 107) ---
+Drift: 938Hz | LDPC: 10 | BER: 0
+
+--- Runde 113 (Paket 108) ---
+Drift: 988Hz | LDPC: 0 | BER: 0
+
+--- Runde 114 (Paket 109) ---
+Drift: 934Hz | LDPC: 0 | BER: 0
+
+--- Runde 115 (Paket 110) ---
+Drift: 944Hz | LDPC: 0 | BER: 0
+
+--- Runde 116 (Paket 111) ---
+Drift: 970Hz | LDPC: 0 | BER: 0
+
+--- Runde 117 (Paket 112) ---
+Drift: 951Hz | LDPC: 9 | BER: 0
+
+--- Runde 118 (Paket 113) ---
+Drift: 925Hz | LDPC: 0 | BER: 0
+
+--- Runde 119 (Paket 114) ---
+Drift: 947Hz | LDPC: 0 | BER: 0
+
+--- Runde 120 (Paket 115) ---
+Drift: 988Hz | LDPC: 0 | BER: 0
+
+--- Runde 121 (Paket 116) ---
+Drift: 977Hz | LDPC: 11 | BER: 0
+
+--- Runde 122 (Paket 117) ---
+Drift: 900Hz | LDPC: 0 | BER: 0
+
+--- Runde 123 (Paket 118) ---
+Drift: 938Hz | LDPC: 0 | BER: 0
+
+--- Runde 124 (Paket 119) ---
+Drift: 954Hz | LDPC: 0 | BER: 0
+
+--- Runde 125 (Paket 120) ---
+Drift: 987Hz | LDPC: 0 | BER: 0
+
+--- Runde 126 (Paket 121) ---
+Drift: 933Hz | LDPC: 17 | BER: 0
+
+--- Runde 127 (Paket 122) ---
+Drift: 911Hz | LDPC: 0 | BER: 0
+
+--- Runde 128 (Paket 123) ---
+Drift: 915Hz | LDPC: 0 | BER: 0
+
+--- Runde 129 (Paket 124) ---
+Drift: 932Hz | LDPC: 0 | BER: 0
+
+--- Runde 130 (Paket 125) ---
+Drift: 908Hz | LDPC: 11 | BER: 0
+
+--- Runde 131 (Paket 126) ---
+Drift: 945Hz | LDPC: 0 | BER: 0
+
+--- Runde 132 (Paket 127) ---
+Drift: 900Hz | LDPC: 0 | BER: 0
+
+--- Runde 133 (Paket 128) ---
+Drift: 913Hz | LDPC: 0 | BER: 0
+
+--- Runde 134 (Paket 129) ---
+Drift: 889Hz | LDPC: 6 | BER: 0
+
+--- Runde 135 (Paket 130) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 136 (Paket 131) ---
+Drift: 913Hz | LDPC: 0 | BER: 0
+
+--- Runde 137 (Paket 132) ---
+Drift: 882Hz | LDPC: 0 | BER: 0
+
+--- Runde 138 (Paket 133) ---
+Drift: 849Hz | LDPC: 7 | BER: 0
+
+--- Runde 139 (Paket 134) ---
+Drift: 762Hz | LDPC: 9 | BER: 0
+
+--- Runde 140 (Paket 135) ---
+Drift: 865Hz | LDPC: 0 | BER: 0
+
+--- Runde 141 (Paket 136) ---
+Drift: 871Hz | LDPC: 0 | BER: 0
+
+--- Runde 142 (Paket 137) ---
+Drift: 906Hz | LDPC: 0 | BER: 0
+
+--- Runde 143 (Paket 138) ---
+Drift: 938Hz | LDPC: 9 | BER: 0
+
+--- Runde 144 (Paket 139) ---
+Drift: 987Hz | LDPC: 0 | BER: 0
+
+--- Runde 145 (Paket 140) ---
+Drift: 967Hz | LDPC: 0 | BER: 0
+
+--- Runde 146 (Paket 141) ---
+Drift: 1015Hz | LDPC: 0 | BER: 0
+
+--- Runde 147 (Paket 142) ---
+Drift: 964Hz | LDPC: 25 | BER: 0
+
+--- Runde 148 (Paket 143) ---
+Drift: 921Hz | LDPC: 0 | BER: 0
+
+--- Runde 149 (Paket 144) ---
+Drift: 949Hz | LDPC: 0 | BER: 0
+
+--- Runde 150 (Paket 145) ---
+Drift: 945Hz | LDPC: 0 | BER: 0
+
+--- Runde 151 (Paket 146) ---
+Drift: 981Hz | LDPC: 13 | BER: 0
+
+--- Runde 152 (Paket 147) ---
+Drift: 958Hz | LDPC: 0 | BER: 0
+
+--- Runde 153 (Paket 148) ---
+Drift: 928Hz | LDPC: 0 | BER: 0
+
+--- Runde 154 (Paket 149) ---
+Drift: 971Hz | LDPC: 0 | BER: 0
+
+--- Runde 155 (Paket 150) ---
+Drift: 927Hz | LDPC: 0 | BER: 0
+
+--- Runde 156 (Paket 151) ---
+Drift: 911Hz | LDPC: 3 | BER: 0
+
+--- Runde 157 (Paket 152) ---
+Drift: 939Hz | LDPC: 0 | BER: 0
+
+--- Runde 158 (Paket 153) ---
+Drift: 904Hz | LDPC: 0 | BER: 0
+
+--- Runde 160 (Paket 154) ---
+Drift: 963Hz | LDPC: 22 | BER: 0
+
+--- Runde 161 (Paket 155) ---
+Drift: 932Hz | LDPC: 0 | BER: 0
+
+--- Runde 162 (Paket 156) ---
+Drift: 954Hz | LDPC: 0 | BER: 0
+
+--- Runde 163 (Paket 157) ---
+Drift: 993Hz | LDPC: 0 | BER: 0
+
+--- Runde 164 (Paket 158) ---
+Drift: 946Hz | LDPC: 15 | BER: 0
+
+--- Runde 165 (Paket 159) ---
+Drift: 903Hz | LDPC: 0 | BER: 0
+
+--- Runde 166 (Paket 160) ---
+Drift: 884Hz | LDPC: 0 | BER: 0
+
+--- Runde 167 (Paket 161) ---
+Drift: 935Hz | LDPC: 0 | BER: 0
+
+--- Runde 168 (Paket 162) ---
+Drift: 963Hz | LDPC: 9 | BER: 0
+
+--- Runde 169 (Paket 163) ---
+Drift: 934Hz | LDPC: 0 | BER: 0
+
+--- Runde 170 (Paket 164) ---
+Drift: 963Hz | LDPC: 0 | BER: 0
+
+--- Runde 171 (Paket 165) ---
+Drift: 955Hz | LDPC: 0 | BER: 0
+
+--- Runde 172 (Paket 166) ---
+Drift: 946Hz | LDPC: 1 | BER: 0
+
+--- Runde 173 (Paket 167) ---
+Drift: 917Hz | LDPC: 9 | BER: 0
+
+--- Runde 174 (Paket 168) ---
+Drift: 973Hz | LDPC: 0 | BER: 0
+
+--- Runde 175 (Paket 169) ---
+Drift: 990Hz | LDPC: 0 | BER: 0
+
+--- Runde 176 (Paket 170) ---
+Drift: 854Hz | LDPC: 0 | BER: 0
+
+--- Runde 177 (Paket 171) ---
+Drift: 864Hz | LDPC: 20 | BER: 0
+
+--- Runde 178 (Paket 172) ---
+Drift: 957Hz | LDPC: 0 | BER: 0
+
+--- Runde 179 (Paket 173) ---
+Drift: 925Hz | LDPC: 0 | BER: 0
+
+--- Runde 180 (Paket 174) ---
+Drift: 954Hz | LDPC: 0 | BER: 0
+
+--- Runde 181 (Paket 175) ---
+Drift: 900Hz | LDPC: 15 | BER: 0
+
+--- Runde 182 (Paket 176) ---
+Drift: 902Hz | LDPC: 0 | BER: 0
+
+--- Runde 183 (Paket 177) ---
+Drift: 884Hz | LDPC: 0 | BER: 0
+
+--- Runde 184 (Paket 178) ---
+Drift: 950Hz | LDPC: 0 | BER: 0
+
+--- Runde 185 (Paket 179) ---
+Drift: 931Hz | LDPC: 10 | BER: 0
+
+--- Runde 186 (Paket 180) ---
+Drift: 944Hz | LDPC: 0 | BER: 0
+
+--- Runde 187 (Paket 181) ---
+Drift: 950Hz | LDPC: 0 | BER: 0
+
+--- Runde 188 (Paket 182) ---
+Drift: 917Hz | LDPC: 0 | BER: 0
+
+--- Runde 189 (Paket 183) ---
+Drift: 935Hz | LDPC: 0 | BER: 0
+
+--- Runde 190 (Paket 184) ---
+Drift: 952Hz | LDPC: 7 | BER: 0
+
+--- Runde 191 (Paket 185) ---
+Drift: 1008Hz | LDPC: 0 | BER: 0
+
+--- Runde 192 (Paket 186) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+--- Runde 193 (Paket 187) ---
+Drift: 947Hz | LDPC: 0 | BER: 0
+
+--- Runde 194 (Paket 188) ---
+Drift: 912Hz | LDPC: 16 | BER: 0
+
+--- Runde 195 (Paket 189) ---
+Drift: 969Hz | LDPC: 0 | BER: 0
+
+--- Runde 196 (Paket 190) ---
+Drift: 937Hz | LDPC: 0 | BER: 0
+
+--- Runde 197 (Paket 191) ---
+Drift: 959Hz | LDPC: 0 | BER: 0
+
+--- Runde 198 (Paket 192) ---
+Drift: 894Hz | LDPC: 11 | BER: 0
+
+--- Runde 199 (Paket 193) ---
+Drift: 964Hz | LDPC: 0 | BER: 0
+
+--- Runde 200 (Paket 194) ---
+Drift: 962Hz | LDPC: 0 | BER: 0
+
+
+SDR verbunden! Bereit auf 2450.0 MHz.
+[ESP32] GPS Signal empfangen.
+Gerät: A  |  ESP32-Sync: AKTIV
+
+══════════════════════════════════════════════════
+ KALIBRIERUNG – Rauschboden messen
+══════════════════════════════════════════════════
+ WICHTIG: Kein anderes Gerät darf senden!
+ Messung 20/20: Peak =       739472
+ → Schwellwert = 803440
+══════════════════════════════════════════════════
+
+
+==================================================
+Was möchtest du tun?
+ [t] TDMA-Test (Burst-Modus mit optimiertem Timing)
+ [q] Beenden
+Deine Wahl: t
+Wie viele Pakete sollen INSGESAMT getestet werden? (Standard: 100): 200
+Wie viele Pakete PRO SLOT (Burst-Size)? (Standard: 3): 1
+Gib den Namen für das TDMA-Test-Logfile ein (ohne .txt): 5m_garten_test2
+
+--- TDMA TEST MODUS GESTARTET (Gerät A) ---
+Sende-Signal: 1 Pakete pro Slot (6208 Samples).
+Ziel: 200 Pakete in 200 Slots austauschen...
+
+[A] Runde 1: Kein Paket detektiert.
+[A] Runde 2: Kein Paket detektiert.
+[A] Runde 3: Kein Paket detektiert.
+[A] Runde 4: Kein Paket detektiert.
+[A] Runde 5: ✓ Paket 1/1 decodiert (LDPC: 18 | BER: 0)
+[A] Runde 6: Kein Paket detektiert.
+[A] Runde 7: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 8: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 8: ✓ Paket 2/1 decodiert (LDPC: 183 | BER: 143)
+[A] Runde 9: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 10: ✓ Paket 1/1 decodiert (LDPC: 17 | BER: 0)
+[A] Runde 11: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 12: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 13: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 14: ✓ Paket 1/1 decodiert (LDPC: 5 | BER: 0)
+[A] Runde 15: ✓ Paket 1/1 decodiert (LDPC: 2 | BER: 0)
+[A] Runde 16: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 17: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 18: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 19: ✓ Paket 1/1 decodiert (LDPC: 24 | BER: 0)
+[A] Runde 20: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 21: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 22: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 23: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 24: ✓ Paket 1/1 decodiert (LDPC: 7 | BER: 0)
+[A] Runde 25: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 26: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 27: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 28: ✓ Paket 1/1 decodiert (LDPC: 22 | BER: 0)
+[A] Runde 29: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 30: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 31: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 32: ✓ Paket 1/1 decodiert (LDPC: 4 | BER: 0)
+[A] Runde 33: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 34: Kein Paket detektiert.
+[A] Runde 35: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 36: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 37: ✓ Paket 1/1 decodiert (LDPC: 18 | BER: 0)
+[A] Runde 38: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 39: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 40: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 41: ✓ Paket 1/1 decodiert (LDPC: 14 | BER: 0)
+[A] Runde 42: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 43: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 44: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 45: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 46: ✓ Paket 1/1 decodiert (LDPC: 2 | BER: 0)
+[A] Runde 47: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 48: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 49: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 50: ✓ Paket 1/1 decodiert (LDPC: 24 | BER: 0)
+[A] Runde 51: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 52: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 53: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 54: ✓ Paket 1/1 decodiert (LDPC: 11 | BER: 0)
+[A] Runde 55: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 56: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 57: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 58: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 59: ✓ Paket 1/1 decodiert (LDPC: 17 | BER: 0)
+[A] Runde 60: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 61: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 62: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 63: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 64: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 65: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 66: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 67: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 68: ✓ Paket 1/1 decodiert (LDPC: 11 | BER: 0)
+[A] Runde 69: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 70: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 71: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 72: ✓ Paket 1/1 decodiert (LDPC: 14 | BER: 0)
+[A] Runde 73: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 74: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 75: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 76: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 77: ✓ Paket 1/1 decodiert (LDPC: 22 | BER: 0)
+[A] Runde 78: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 79: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 80: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 81: ✓ Paket 1/1 decodiert (LDPC: 1 | BER: 0)
+[A] Runde 82: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 83: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 84: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 85: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 85: ✓ Paket 2/1 decodiert (LDPC: 159 | BER: 148)
+[A] Runde 86: ✓ Paket 1/1 decodiert (LDPC: 17 | BER: 0)
+[A] Runde 87: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 88: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 89: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 90: ✓ Paket 1/1 decodiert (LDPC: 3 | BER: 0)
+[A] Runde 91: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 92: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 93: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 94: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 95: ✓ Paket 1/1 decodiert (LDPC: 4 | BER: 0)
+[A] Runde 96: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 97: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 98: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 99: ✓ Paket 1/1 decodiert (LDPC: 17 | BER: 0)
+[A] Runde 100: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 101: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 102: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 103: ✓ Paket 1/1 decodiert (LDPC: 6 | BER: 0)
+[A] Runde 104: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 105: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 106: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 107: Kein Paket detektiert.
+[A] Runde 108: ✓ Paket 1/1 decodiert (LDPC: 18 | BER: 0)
+[A] Runde 109: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 110: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 111: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 112: ✓ Paket 1/1 decodiert (LDPC: 10 | BER: 0)
+[A] Runde 113: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 114: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 115: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 116: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 117: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 118: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 119: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 120: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 121: ✓ Paket 1/1 decodiert (LDPC: 11 | BER: 0)
+[A] Runde 122: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 123: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 124: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 125: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 126: ✓ Paket 1/1 decodiert (LDPC: 17 | BER: 0)
+[A] Runde 127: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 128: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 129: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 130: ✓ Paket 1/1 decodiert (LDPC: 11 | BER: 0)
+[A] Runde 131: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 132: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 133: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 134: ✓ Paket 1/1 decodiert (LDPC: 6 | BER: 0)
+[A] Runde 135: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 136: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 137: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 138: ✓ Paket 1/1 decodiert (LDPC: 7 | BER: 0)
+[A] Runde 139: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 140: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 141: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 142: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 143: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 144: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 145: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 146: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 147: ✓ Paket 1/1 decodiert (LDPC: 25 | BER: 0)
+[A] Runde 148: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 149: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 150: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 151: ✓ Paket 1/1 decodiert (LDPC: 13 | BER: 0)
+[A] Runde 152: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 153: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 154: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 155: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 156: ✓ Paket 1/1 decodiert (LDPC: 3 | BER: 0)
+[A] Runde 157: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 158: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 159: Kein Paket detektiert.
+[A] Runde 160: ✓ Paket 1/1 decodiert (LDPC: 22 | BER: 0)
+[A] Runde 161: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 162: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 163: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 164: ✓ Paket 1/1 decodiert (LDPC: 15 | BER: 0)
+[A] Runde 165: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 166: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 167: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 168: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 169: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 170: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 171: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 172: ✓ Paket 1/1 decodiert (LDPC: 1 | BER: 0)
+[A] Runde 173: ✓ Paket 1/1 decodiert (LDPC: 9 | BER: 0)
+[A] Runde 174: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 175: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 176: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 177: ✓ Paket 1/1 decodiert (LDPC: 20 | BER: 0)
+[A] Runde 178: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 179: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 180: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 181: ✓ Paket 1/1 decodiert (LDPC: 15 | BER: 0)
+[A] Runde 182: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 183: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 184: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 185: ✓ Paket 1/1 decodiert (LDPC: 10 | BER: 0)
+[A] Runde 186: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 187: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 188: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 189: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 190: ✓ Paket 1/1 decodiert (LDPC: 7 | BER: 0)
+[A] Runde 191: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 192: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 193: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 194: ✓ Paket 1/1 decodiert (LDPC: 16 | BER: 0)
+[A] Runde 195: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 196: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 197: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 198: ✓ Paket 1/1 decodiert (LDPC: 11 | BER: 0)
+[A] Runde 199: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+[A] Runde 200: ✓ Paket 1/1 decodiert (LDPC: 0 | BER: 0)
+
+[A] TDMA-Test beendet. Speichere Daten...
+💾 Log: 5m_garten_test2.txt | BER: 0.4630%
+
+==================================================
+Was möchtest du tun?
+ [t] TDMA-Test (Burst-Modus mit optimiertem Timing)
+ [q] Beenden
+Deine Wahl: q
+Tschüss!

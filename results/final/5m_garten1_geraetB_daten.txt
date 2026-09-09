@@ -1,0 +1,453 @@
+SDR TDMA-TEST | BER: 0.6811%
+Runden: 100/100 | Empfangen: 150 | Korrigiert: 959
+
+--- Runde 1 (Paket 1) ---
+Drift: -958Hz | LDPC: 0 | BER: 0
+
+--- Runde 1 (Paket 2) ---
+Drift: -920Hz | LDPC: 0 | BER: 0
+
+--- Runde 2 (Paket 3) ---
+Drift: -893Hz | LDPC: 0 | BER: 0
+
+--- Runde 3 (Paket 4) ---
+Drift: -1037Hz | LDPC: 0 | BER: 0
+
+--- Runde 3 (Paket 5) ---
+Drift: -918Hz | LDPC: 0 | BER: 0
+
+--- Runde 4 (Paket 6) ---
+Drift: -911Hz | LDPC: 0 | BER: 0
+
+--- Runde 5 (Paket 7) ---
+Drift: -949Hz | LDPC: 24 | BER: 0
+
+--- Runde 5 (Paket 8) ---
+Drift: -980Hz | LDPC: 17 | BER: 0
+
+--- Runde 6 (Paket 9) ---
+Drift: -935Hz | LDPC: 0 | BER: 0
+
+--- Runde 6 (Paket 10) ---
+Drift: -1026Hz | LDPC: 0 | BER: 0
+
+--- Runde 7 (Paket 11) ---
+Drift: -972Hz | LDPC: 0 | BER: 0
+
+--- Runde 8 (Paket 12) ---
+Drift: -914Hz | LDPC: 0 | BER: 0
+
+--- Runde 8 (Paket 13) ---
+Drift: -999Hz | LDPC: 44 | BER: 0
+
+--- Runde 9 (Paket 14) ---
+Drift: -995Hz | LDPC: 2 | BER: 0
+
+--- Runde 9 (Paket 15) ---
+Drift: -990Hz | LDPC: 2 | BER: 0
+
+--- Runde 10 (Paket 16) ---
+Drift: -968Hz | LDPC: 6 | BER: 0
+
+--- Runde 11 (Paket 17) ---
+Drift: -931Hz | LDPC: 0 | BER: 0
+
+--- Runde 11 (Paket 18) ---
+Drift: -929Hz | LDPC: 0 | BER: 0
+
+--- Runde 12 (Paket 19) ---
+Drift: -951Hz | LDPC: 0 | BER: 0
+
+--- Runde 13 (Paket 20) ---
+Drift: -993Hz | LDPC: 35 | BER: 0
+
+--- Runde 13 (Paket 21) ---
+Drift: -975Hz | LDPC: 0 | BER: 0
+
+--- Runde 14 (Paket 22) ---
+Drift: -968Hz | LDPC: 26 | BER: 0
+
+--- Runde 15 (Paket 23) ---
+Drift: -862Hz | LDPC: 0 | BER: 0
+
+--- Runde 16 (Paket 24) ---
+Drift: -976Hz | LDPC: 23 | BER: 0
+
+--- Runde 16 (Paket 25) ---
+Drift: -1011Hz | LDPC: 22 | BER: 0
+
+--- Runde 17 (Paket 26) ---
+Drift: -865Hz | LDPC: 0 | BER: 0
+
+--- Runde 17 (Paket 27) ---
+Drift: -948Hz | LDPC: 0 | BER: 0
+
+--- Runde 18 (Paket 28) ---
+Drift: -952Hz | LDPC: 2 | BER: 0
+
+--- Runde 18 (Paket 29) ---
+Drift: -930Hz | LDPC: 2 | BER: 0
+
+--- Runde 19 (Paket 30) ---
+Drift: -950Hz | LDPC: 16 | BER: 0
+
+--- Runde 19 (Paket 31) ---
+Drift: -1032Hz | LDPC: 5 | BER: 0
+
+--- Runde 20 (Paket 32) ---
+Drift: -927Hz | LDPC: 0 | BER: 0
+
+--- Runde 21 (Paket 33) ---
+Drift: -936Hz | LDPC: 0 | BER: 0
+
+--- Runde 21 (Paket 34) ---
+Drift: -957Hz | LDPC: 0 | BER: 0
+
+--- Runde 22 (Paket 35) ---
+Drift: -995Hz | LDPC: 0 | BER: 0
+
+--- Runde 22 (Paket 36) ---
+Drift: -1001Hz | LDPC: 0 | BER: 0
+
+--- Runde 23 (Paket 37) ---
+Drift: -961Hz | LDPC: 6 | BER: 0
+
+--- Runde 24 (Paket 38) ---
+Drift: -992Hz | LDPC: 1 | BER: 0
+
+--- Runde 24 (Paket 39) ---
+Drift: -979Hz | LDPC: 6 | BER: 0
+
+--- Runde 25 (Paket 40) ---
+Drift: -936Hz | LDPC: 0 | BER: 0
+
+--- Runde 26 (Paket 41) ---
+Drift: -965Hz | LDPC: 0 | BER: 0
+
+--- Runde 26 (Paket 42) ---
+Drift: -1001Hz | LDPC: 0 | BER: 0
+
+--- Runde 27 (Paket 43) ---
+Drift: -1028Hz | LDPC: 0 | BER: 0
+
+--- Runde 28 (Paket 44) ---
+Drift: -949Hz | LDPC: 2 | BER: 0
+
+--- Runde 28 (Paket 45) ---
+Drift: -885Hz | LDPC: 1 | BER: 0
+
+--- Runde 29 (Paket 46) ---
+Drift: -988Hz | LDPC: 3 | BER: 0
+
+--- Runde 29 (Paket 47) ---
+Drift: -957Hz | LDPC: 5 | BER: 0
+
+--- Runde 30 (Paket 48) ---
+Drift: -1073Hz | LDPC: 0 | BER: 0
+
+--- Runde 31 (Paket 49) ---
+Drift: -1101Hz | LDPC: 0 | BER: 0
+
+--- Runde 32 (Paket 50) ---
+Drift: -1000Hz | LDPC: 0 | BER: 0
+
+--- Runde 33 (Paket 51) ---
+Drift: -963Hz | LDPC: 6 | BER: 0
+
+--- Runde 34 (Paket 52) ---
+Drift: -999Hz | LDPC: 0 | BER: 0
+
+--- Runde 34 (Paket 53) ---
+Drift: -915Hz | LDPC: 1 | BER: 0
+
+--- Runde 35 (Paket 54) ---
+Drift: -944Hz | LDPC: 0 | BER: 0
+
+--- Runde 36 (Paket 55) ---
+Drift: -1036Hz | LDPC: 0 | BER: 0
+
+--- Runde 36 (Paket 56) ---
+Drift: -965Hz | LDPC: 0 | BER: 0
+
+--- Runde 37 (Paket 57) ---
+Drift: -1048Hz | LDPC: 42 | BER: 0
+
+--- Runde 38 (Paket 58) ---
+Drift: -997Hz | LDPC: 18 | BER: 0
+
+--- Runde 38 (Paket 59) ---
+Drift: -1015Hz | LDPC: 23 | BER: 0
+
+--- Runde 39 (Paket 60) ---
+Drift: -963Hz | LDPC: 0 | BER: 0
+
+--- Runde 40 (Paket 61) ---
+Drift: -835Hz | LDPC: 0 | BER: 0
+
+--- Runde 40 (Paket 62) ---
+Drift: -952Hz | LDPC: 0 | BER: 0
+
+--- Runde 41 (Paket 63) ---
+Drift: -937Hz | LDPC: 0 | BER: 0
+
+--- Runde 42 (Paket 64) ---
+Drift: -932Hz | LDPC: 4 | BER: 0
+
+--- Runde 43 (Paket 65) ---
+Drift: -986Hz | LDPC: 14 | BER: 0
+
+--- Runde 44 (Paket 66) ---
+Drift: -1075Hz | LDPC: 0 | BER: 0
+
+--- Runde 44 (Paket 67) ---
+Drift: -1032Hz | LDPC: 0 | BER: 0
+
+--- Runde 45 (Paket 68) ---
+Drift: -1015Hz | LDPC: 0 | BER: 0
+
+--- Runde 45 (Paket 69) ---
+Drift: -949Hz | LDPC: 0 | BER: 0
+
+--- Runde 46 (Paket 70) ---
+Drift: -966Hz | LDPC: 0 | BER: 0
+
+--- Runde 47 (Paket 71) ---
+Drift: -904Hz | LDPC: 11 | BER: 0
+
+--- Runde 48 (Paket 72) ---
+Drift: -909Hz | LDPC: 1 | BER: 0
+
+--- Runde 48 (Paket 73) ---
+Drift: -916Hz | LDPC: 0 | BER: 0
+
+--- Runde 49 (Paket 74) ---
+Drift: -988Hz | LDPC: 11 | BER: 0
+
+--- Runde 50 (Paket 75) ---
+Drift: -943Hz | LDPC: 0 | BER: 0
+
+--- Runde 51 (Paket 76) ---
+Drift: -894Hz | LDPC: 0 | BER: 0
+
+--- Runde 52 (Paket 77) ---
+Drift: -935Hz | LDPC: 11 | BER: 0
+
+--- Runde 53 (Paket 78) ---
+Drift: -882Hz | LDPC: 0 | BER: 0
+
+--- Runde 53 (Paket 79) ---
+Drift: -897Hz | LDPC: 0 | BER: 0
+
+--- Runde 54 (Paket 80) ---
+Drift: -980Hz | LDPC: 0 | BER: 0
+
+--- Runde 55 (Paket 81) ---
+Drift: -928Hz | LDPC: 0 | BER: 0
+
+--- Runde 55 (Paket 82) ---
+Drift: -949Hz | LDPC: 0 | BER: 0
+
+--- Runde 56 (Paket 83) ---
+Drift: -926Hz | LDPC: 24 | BER: 0
+
+--- Runde 56 (Paket 84) ---
+Drift: -978Hz | LDPC: 24 | BER: 0
+
+--- Runde 57 (Paket 85) ---
+Drift: -930Hz | LDPC: 0 | BER: 0
+
+--- Runde 57 (Paket 86) ---
+Drift: -899Hz | LDPC: 0 | BER: 0
+
+--- Runde 58 (Paket 87) ---
+Drift: -963Hz | LDPC: 0 | BER: 0
+
+--- Runde 58 (Paket 88) ---
+Drift: -978Hz | LDPC: 0 | BER: 0
+
+--- Runde 59 (Paket 89) ---
+Drift: -936Hz | LDPC: 0 | BER: 0
+
+--- Runde 59 (Paket 90) ---
+Drift: -1000Hz | LDPC: 0 | BER: 0
+
+--- Runde 59 (Paket 91) ---
+Drift: -51661Hz | LDPC: 160 | BER: 157
+
+--- Runde 60 (Paket 92) ---
+Drift: -987Hz | LDPC: 3 | BER: 0
+
+--- Runde 61 (Paket 93) ---
+Drift: -910Hz | LDPC: 5 | BER: 0
+
+--- Runde 61 (Paket 94) ---
+Drift: -1013Hz | LDPC: 2 | BER: 0
+
+--- Runde 62 (Paket 95) ---
+Drift: -892Hz | LDPC: 0 | BER: 0
+
+--- Runde 63 (Paket 96) ---
+Drift: -1028Hz | LDPC: 0 | BER: 0
+
+--- Runde 64 (Paket 97) ---
+Drift: -939Hz | LDPC: 0 | BER: 0
+
+--- Runde 64 (Paket 98) ---
+Drift: -926Hz | LDPC: 0 | BER: 0
+
+--- Runde 64 (Paket 99) ---
+Drift: -38595Hz | LDPC: 146 | BER: 171
+
+--- Runde 65 (Paket 100) ---
+Drift: -950Hz | LDPC: 19 | BER: 0
+
+--- Runde 65 (Paket 101) ---
+Drift: -985Hz | LDPC: 14 | BER: 0
+
+--- Runde 66 (Paket 102) ---
+Drift: -939Hz | LDPC: 0 | BER: 0
+
+--- Runde 67 (Paket 103) ---
+Drift: -959Hz | LDPC: 0 | BER: 0
+
+--- Runde 68 (Paket 104) ---
+Drift: -939Hz | LDPC: 0 | BER: 0
+
+--- Runde 69 (Paket 105) ---
+Drift: -932Hz | LDPC: 15 | BER: 0
+
+--- Runde 70 (Paket 106) ---
+Drift: -916Hz | LDPC: 0 | BER: 0
+
+--- Runde 71 (Paket 107) ---
+Drift: -904Hz | LDPC: 0 | BER: 0
+
+--- Runde 71 (Paket 108) ---
+Drift: -939Hz | LDPC: 0 | BER: 0
+
+--- Runde 72 (Paket 109) ---
+Drift: -930Hz | LDPC: 0 | BER: 0
+
+--- Runde 72 (Paket 110) ---
+Drift: -961Hz | LDPC: 0 | BER: 0
+
+--- Runde 73 (Paket 111) ---
+Drift: -948Hz | LDPC: 0 | BER: 0
+
+--- Runde 73 (Paket 112) ---
+Drift: -912Hz | LDPC: 0 | BER: 0
+
+--- Runde 74 (Paket 113) ---
+Drift: -921Hz | LDPC: 7 | BER: 0
+
+--- Runde 75 (Paket 114) ---
+Drift: -1007Hz | LDPC: 0 | BER: 0
+
+--- Runde 76 (Paket 115) ---
+Drift: -981Hz | LDPC: 0 | BER: 0
+
+--- Runde 76 (Paket 116) ---
+Drift: -1023Hz | LDPC: 0 | BER: 0
+
+--- Runde 77 (Paket 117) ---
+Drift: -999Hz | LDPC: 0 | BER: 0
+
+--- Runde 78 (Paket 118) ---
+Drift: -931Hz | LDPC: 7 | BER: 0
+
+--- Runde 78 (Paket 119) ---
+Drift: -922Hz | LDPC: 9 | BER: 0
+
+--- Runde 79 (Paket 120) ---
+Drift: -983Hz | LDPC: 3 | BER: 0
+
+--- Runde 79 (Paket 121) ---
+Drift: -983Hz | LDPC: 1 | BER: 0
+
+--- Runde 80 (Paket 122) ---
+Drift: -1013Hz | LDPC: 6 | BER: 0
+
+--- Runde 81 (Paket 123) ---
+Drift: -863Hz | LDPC: 0 | BER: 0
+
+--- Runde 81 (Paket 124) ---
+Drift: -965Hz | LDPC: 0 | BER: 0
+
+--- Runde 82 (Paket 125) ---
+Drift: -916Hz | LDPC: 0 | BER: 0
+
+--- Runde 82 (Paket 126) ---
+Drift: -856Hz | LDPC: 0 | BER: 0
+
+--- Runde 83 (Paket 127) ---
+Drift: -919Hz | LDPC: 13 | BER: 0
+
+--- Runde 84 (Paket 128) ---
+Drift: -930Hz | LDPC: 0 | BER: 0
+
+--- Runde 84 (Paket 129) ---
+Drift: -936Hz | LDPC: 0 | BER: 0
+
+--- Runde 85 (Paket 130) ---
+Drift: -988Hz | LDPC: 0 | BER: 0
+
+--- Runde 86 (Paket 131) ---
+Drift: -913Hz | LDPC: 0 | BER: 0
+
+--- Runde 87 (Paket 132) ---
+Drift: -936Hz | LDPC: 0 | BER: 0
+
+--- Runde 88 (Paket 133) ---
+Drift: -976Hz | LDPC: 9 | BER: 0
+
+--- Runde 88 (Paket 134) ---
+Drift: -989Hz | LDPC: 11 | BER: 0
+
+--- Runde 89 (Paket 135) ---
+Drift: -997Hz | LDPC: 0 | BER: 0
+
+--- Runde 89 (Paket 136) ---
+Drift: -986Hz | LDPC: 0 | BER: 0
+
+--- Runde 90 (Paket 137) ---
+Drift: -916Hz | LDPC: 0 | BER: 0
+
+--- Runde 91 (Paket 138) ---
+Drift: -943Hz | LDPC: 0 | BER: 0
+
+--- Runde 91 (Paket 139) ---
+Drift: -995Hz | LDPC: 0 | BER: 0
+
+--- Runde 92 (Paket 140) ---
+Drift: -993Hz | LDPC: 58 | BER: 3
+
+--- Runde 92 (Paket 141) ---
+Drift: -906Hz | LDPC: 17 | BER: 0
+
+--- Runde 93 (Paket 142) ---
+Drift: -897Hz | LDPC: 0 | BER: 0
+
+--- Runde 93 (Paket 143) ---
+Drift: -916Hz | LDPC: 0 | BER: 0
+
+--- Runde 94 (Paket 144) ---
+Drift: -855Hz | LDPC: 0 | BER: 0
+
+--- Runde 95 (Paket 145) ---
+Drift: -958Hz | LDPC: 0 | BER: 0
+
+--- Runde 95 (Paket 146) ---
+Drift: -973Hz | LDPC: 0 | BER: 0
+
+--- Runde 96 (Paket 147) ---
+Drift: -990Hz | LDPC: 2 | BER: 0
+
+--- Runde 96 (Paket 148) ---
+Drift: -1066Hz | LDPC: 0 | BER: 0
+
+--- Runde 97 (Paket 149) ---
+Drift: -1001Hz | LDPC: 12 | BER: 0
+
+--- Runde 98 (Paket 150) ---
+Drift: -959Hz | LDPC: 0 | BER: 0
+

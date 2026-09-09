@@ -1,0 +1,3 @@
+SDR TDMA-TEST | BER: 0.5062%
+Runden: 200/200 | Pakete erwartet: 200 | Pakete empfangen: 200 (0.0% Verlust) | LDPC korrigiert: 911 Bit
+Runden ganz ohne Paket: 2 (davon mit Präambel-Score > 0: 2)

@@ -4,7 +4,7 @@
 
 Dieses Repository enthält die vollständige Maturaarbeit inklusive Python-Implementierung eines eigenen physikalischen Übertragungsverfahrens (PHY) für Software Defined Radios (SDR). Untersucht wird, ob sich die Robustheit von **Chirp Spread Spectrum (CSS)** mit einer höheren Informationsdichte pro Symbol kombinieren lässt, indem zusätzlich in **Chirp-Richtung (Slope-Shift Keying, SSK)** und **differenzieller Phase (DQPSK)** codiert wird. Das System wurde auf zwei AD9363/Zynq-7020-basierten SDR-Plattformen entwickelt und unter realen Funkbedingungen im Freifeld getestet.
 
-Die vollständige schriftliche Arbeit befindet sich in **[`Maturarbeit.pdf`](./Maturarbeit.pdf)**. Dieses README beschreibt nur den Aufbau des Repositoriums und die Software.
+Die vollständige schriftliche Arbeit befindet sich in **[`Maturaarbeit.pdf`](./Maturaarbeit.pdf)**. Dieses README beschreibt nur den Aufbau des Repositoriums und die Software.
 
 Finale Konfiguration:
 
